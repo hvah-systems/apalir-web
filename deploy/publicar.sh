@@ -5,5 +5,5 @@ set -euo pipefail
 DESTINO="${1:?Uso: deploy/publicar.sh usuario@servidor}"
 cd "$(dirname "$0")/.."
 ssh "$DESTINO" 'mkdir -p /var/www/apalir'
-rsync -az --delete --exclude '.*' index.html galeria.html assets "$DESTINO:/var/www/apalir/"
+rsync -az --delete --exclude '.*' index.html fundacion.html galeria.html galeria-fundacion.html assets "$DESTINO:/var/www/apalir/"
 echo "Sitio subido a $DESTINO:/var/www/apalir"

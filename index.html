@@ -1,23 +1,25 @@
 <!doctype html>
-<html lang="es">
+<html class="sin-js" lang="es" data-tema="iglesia">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Iglesia Apalir | Aposento Alto de Liberación Restauradora</title>
-<meta name="description" content="Iglesia Apalir — Aposento Alto de Liberación Restauradora y su Fundación Apalir. Cultos presenciales en Bella Vista, Santo Domingo, y obra social con envejecientes, familias y niños.">
+<meta name="description" content="Iglesia Apalir — Aposento Alto de Liberación Restauradora. Cultos virtuales por Zoom los martes, jueves y sábados de 7:30 a 9:00 p. m.">
+<meta name="theme-color" content="#0b2f48">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/sitio.css?v=3">
+<link rel="stylesheet" href="assets/sitio.css?v=7">
+<script>document.documentElement.classList.replace('sin-js', 'js');</script>
 </head>
 <body>
 <a class="salto" href="#contenido">Saltar al contenido</a>
 
 <div class="anuncio" role="region" aria-label="Anuncio">
   <div class="contenedor">
-    <span><strong>Quitando la piedra</strong> · Culto presencial · Sábado 17 de octubre de 2026, 10:00 a. m.</span>
-    <a href="#evento">Ver detalles</a>
+    <span><strong>Cultos virtuales por Zoom</strong> · Martes, jueves y sábados · 7:30 a 9:00 p. m.</span>
+    <a href="#cultos">Cómo unirte</a>
   </div>
 </div>
 
@@ -35,11 +37,10 @@
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#pastora">Pastora</a></li>
-        <li><a href="#evento">Eventos</a></li>
-        <li><a href="#fundacion">Fundación</a></li>
         <li><a href="galeria.html">Galería</a></li>
-        <li><a href="#visitanos">Visítanos</a></li>
-        <li><a class="nav-cta" href="#donar">Donar</a></li>
+        <li><a href="fundacion.html">Fundación</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a class="nav-cta" href="#cultos">Cultos por Zoom</a></li>
       </ul>
     </nav>
   </div>
@@ -47,50 +48,51 @@
 
 <main id="contenido">
   <section class="hero" id="inicio">
-    <div class="contenedor">
+    <div class="contenedor t-stagger">
       <div>
-        <span class="eyebrow">Bienvenido a casa</span>
-        <h1>Un encuentro con Dios.<br>Una vida <em>restaurada.</em></h1>
-        <p class="lead">Somos el Aposento Alto de Liberación Restauradora: una familia que se reúne para adorar, orar y crecer en la Palabra.</p>
-        <div class="acciones">
-          <a class="btn btn-oro" href="#visitanos">Planea tu visita
+        <span class="eyebrow t-stagger-line">Bienvenido a casa</span>
+        <h1 class="t-stagger-line t-stagger-line--2">Un encuentro con Dios.<br>Una vida <em>restaurada.</em></h1>
+        <p class="lead t-stagger-line t-stagger-line--3">Somos el Aposento Alto de Liberación Restauradora: una familia que se reúne para adorar, orar y crecer en la Palabra. Nuestros cultos son virtuales, por Zoom.</p>
+        <div class="acciones t-stagger-line t-stagger-line--4">
+          <a class="btn btn-oro" href="#cultos">Únete a un culto
             <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
           <a class="btn btn-linea" href="#nosotros">Conoce nuestra iglesia</a>
         </div>
       </div>
-      <figure>
+      <figure class="t-stagger-line t-stagger-line--5">
         <img src="assets/portada-iglesia.jpg" alt="Portada de la Iglesia Apalir: un hombre empuja una gran piedra al amanecer, con el lema Quitando la piedra." width="900" height="1268">
         <figcaption>“Quitad la piedra.” — Juan 11:39</figcaption>
       </figure>
     </div>
+      <div class="ondas" aria-hidden="true"><svg viewBox="0 0 2880 130" preserveAspectRatio="none"><path class="o1" d="M0 46 C360 6 1080 86 1440 46 C1800 6 2520 86 2880 46 V130 H0 Z"/><path class="o2" d="M0 76 C360 116 1080 36 1440 76 C1800 116 2520 36 2880 76 V130 H0 Z"/><path class="o3" d="M0 104 C360 84 1080 124 1440 104 C1800 84 2520 124 2880 104 V130 H0 Z"/></svg></div>
   </section>
 
-  <div class="franja">
+  <div class="franja" id="cultos">
     <div class="contenedor">
       <div class="tarjeta">
         <div class="dato">
           <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
           <div>
-            <small><span class="js-etiqueta-culto">Próximo culto</span> <span class="pastilla js-estado">Próximo</span></small>
-            <b>Sábado 17 de octubre</b>
-            <span class="det">Culto presencial · 2026</span>
+            <small>Días de culto</small>
+            <b>Martes, jueves y sábados</b>
+            <span class="det">Todas las semanas</span>
           </div>
         </div>
         <div class="dato">
           <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
           <div>
-            <small>Hora</small>
-            <b>10:00 a. m.</b>
+            <small>Horario</small>
+            <b>7:30 a 9:00 p. m.</b>
             <span class="det">Hora de República Dominicana</span>
           </div>
         </div>
         <div class="dato">
-          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg>
           <div>
-            <small>Lugar</small>
-            <b>C/ Desiderio Arias #34</b>
-            <span class="det">Bella Vista · Local Agrupación Médica (IDSS)</span>
+            <small>Dónde</small>
+            <b>Virtual por Zoom</b>
+            <span class="det"><a href="mailto:maribel.mocion@apalir.org.do?subject=Enlace%20de%20Zoom%20para%20los%20cultos">Pide el enlace de Zoom</a></span>
           </div>
         </div>
       </div>
@@ -105,24 +107,29 @@
         <p>Nuestro nombre resume lo que creemos y vivimos cada vez que nos reunimos.</p>
       </div>
       <div class="pilares">
-        <article class="pilar">
+        <article class="pilar revela" style="--i: 0">
           <div class="circulo"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div>
           <h3>Aposento Alto</h3>
           <p>Un lugar de oración y comunión, como los discípulos que perseveraban unánimes esperando la promesa del Espíritu.</p>
           <cite>Hechos 1:14</cite>
         </article>
-        <article class="pilar">
+        <article class="pilar revela" style="--i: 1">
           <div class="circulo"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V7a5 5 0 0 1 9.9-1"/><rect x="4" y="11" width="16" height="10" rx="2"/></svg></div>
           <h3>Liberación</h3>
           <p>Creemos en el poder de Cristo para romper cadenas y dar verdadera libertad a quien se acerca a Él.</p>
           <cite>Juan 8:36</cite>
         </article>
-        <article class="pilar">
+        <article class="pilar revela" style="--i: 2">
           <div class="circulo"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
           <h3>Restauración</h3>
           <p>Dios restaura vidas, familias y corazones. Aquí encontrarás una familia que te recibe y camina contigo.</p>
           <cite>Salmo 23:3</cite>
         </article>
+      </div>
+      <div class="cifras">
+        <div class="cifra revela"><b data-hasta="3">3</b><span>cultos cada semana</span></div>
+        <div class="cifra revela"><b data-hasta="90">90</b><span>minutos de adoración por culto</span></div>
+        <div class="cifra revela"><b data-hasta="100" data-sufijo=" %">100 %</b><span>virtual, desde donde estés</span></div>
       </div>
     </div>
   </section>
@@ -136,45 +143,51 @@
         <div class="pastora-texto">
           <span class="eyebrow">Nuestra pastora</span>
           <h2>Pastora <em>Maribel</em></h2>
-          <p>La Pastora Maribel guía a la familia Apalir en la oración y en la Palabra, y lleva la obra de la iglesia a la calle a través de la Fundación Apalir: alimentos, salud y alegría para quienes más lo necesitan.</p>
-          <a class="btn btn-oro" href="#fundacion">Conoce la Fundación
+          <p>La Pastora Maribel guía a la familia Apalir en la oración y en la Palabra. Cada martes, jueves y sábado nos reúne por Zoom para adorar juntos, estés donde estés.</p>
+          <a class="btn btn-oro" href="galeria.html">Ver fotos y videos de la Iglesia
             <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
       </div>
       <div class="pastora-galeria">
-        <figure class="foto"><img src="assets/pastora/1.jpg" alt="La Pastora Maribel, sentada y de blanco, abrazada por una hermana en el evento Quitando la piedra." width="800" height="1067" loading="lazy"></figure>
-        <figure class="foto"><img src="assets/pastora/2.jpg" alt="La Pastora Maribel sonriente, vestida de celeste, junto a una hermana de la iglesia." width="800" height="1422" loading="lazy"></figure>
-        <figure class="foto"><img src="assets/pastora/3.jpg" alt="La Pastora Maribel de pie, vestida de blanco, junto a un balcón con flores rojas." width="747" height="1328" loading="lazy"></figure>
-        <figure class="foto"><img src="assets/pastora/4.jpg" alt="La Pastora Maribel con vestido turquesa junto a un arreglo de flores." width="640" height="640" loading="lazy"></figure>
-        <figure class="foto"><img src="assets/pastora/5.jpg" alt="La Pastora Maribel, de blanco, junto al cartel de la Fundación Apalir Manos dispuestas a servir." width="639" height="960" loading="lazy"></figure>
+        <figure class="foto revela" style="--i: 0"><img src="assets/pastora/1.jpg" alt="La Pastora Maribel, sentada y de blanco, abrazada por una hermana en el evento Quitando la piedra." width="800" height="1067" loading="lazy"></figure>
+        <figure class="foto revela" style="--i: 1"><img src="assets/pastora/2.jpg" alt="La Pastora Maribel sonriente, vestida de celeste, junto a una hermana de la iglesia." width="800" height="1422" loading="lazy"></figure>
+        <figure class="foto revela" style="--i: 2"><img src="assets/pastora/3.jpg" alt="La Pastora Maribel de pie, vestida de blanco, junto a un balcón con flores rojas." width="747" height="1328" loading="lazy"></figure>
+        <figure class="foto revela" style="--i: 3"><img src="assets/pastora/4.jpg" alt="La Pastora Maribel con vestido turquesa junto a un arreglo de flores." width="640" height="640" loading="lazy"></figure>
+        <figure class="foto revela" style="--i: 4"><img src="assets/pastora/5.jpg" alt="La Pastora Maribel, de blanco, junto al cartel de la Fundación Apalir Manos dispuestas a servir." width="639" height="960" loading="lazy"></figure>
       </div>
-      <a class="btn btn-oro ver-mas" href="galeria.html#fotos-iglesia">Ver todas las fotos y videos de la Iglesia</a>
     </div>
   </section>
 
-  <section class="bloque evento" id="evento">
+  <section class="cinta" aria-labelledby="cinta-titulo">
+    <div class="contenedor cinta-cab">
+      <div>
+        <span class="eyebrow">Galería de la Iglesia</span>
+        <h2 id="cinta-titulo">La familia Apalir <em>en imágenes</em></h2>
+      </div>
+      <div class="cinta-ctrl">
+        <button class="btn-pausa" type="button" aria-pressed="false">Pausar</button>
+        <a class="btn btn-oro" href="galeria.html">Ver galería completa</a>
+      </div>
+    </div>
+    <div class="cinta-pista" aria-label="Fotos en movimiento">
+      <div class="cinta-fila"><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/364.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/007.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/368.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/376.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/380.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/384.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/409.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/421.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/425.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/433.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/457.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/484.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/491.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/492.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/052.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/054.jpg" alt="" loading="lazy" height="210"></a><span aria-hidden="true" style="display:contents"><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/364.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/007.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/368.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/376.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/380.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/384.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/409.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/421.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/425.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/433.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/457.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/484.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/491.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/492.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/052.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/054.jpg" alt="" loading="lazy" height="210"></a></span></div>
+      <div class="cinta-fila cinta-fila--inv"><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/435.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/436.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/442.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/464.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/386.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/411.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/367.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/040.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/434.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/377.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/453.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/006.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/488.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/403.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/444.jpg" alt="" loading="lazy" height="210"></a><span aria-hidden="true" style="display:contents"><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/435.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/436.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/442.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/464.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/386.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/411.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/367.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/040.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/434.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/377.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/453.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/006.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/488.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/403.jpg" alt="" loading="lazy" height="210"></a><a href="galeria.html" tabindex="-1"><img src="assets/galeria/iglesia/t/444.jpg" alt="" loading="lazy" height="210"></a></span></div>
+    </div>
+  </section>
+
+  <section class="bloque evento ya-paso" id="evento">
     <div class="contenedor evento-grid">
       <figure class="evento-img">
         <img src="assets/piedra.jpg" alt="Piedra blanca con una pequeña concha encima" width="850" height="325" loading="lazy">
         <a href="assets/volante.jpg" target="_blank" rel="noopener">Ver volante completo<span class="sr"> (se abre en una pestaña nueva)</span></a>
       </figure>
       <div>
-        <span class="eyebrow">Te invita al culto presencial</span>
+        <span class="eyebrow">Nuestro último encuentro especial</span>
         <h2>Quitando la piedra</h2>
         <p class="sub">Ven a ver la gloria de Dios en tu vida.</p>
-        <p class="aviso-pasado" role="status">Este culto ya se realizó. Pronto anunciaremos la próxima fecha; escríbenos para enterarte.</p>
-        <ul class="lista-datos">
-          <li>
-            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
-            <span><b>Sábado 17 de octubre de 2026</b><br>10:00 a. m.</span>
-          </li>
-          <li>
-            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-            <span><b>Calle Desiderio Arias #34, Bella Vista</b><br>Local Agrupación Médica — Instituto Dominicano de Seguros Sociales (IDSS)</span>
-          </li>
-        </ul>
-        <a class="btn btn-oro" href="https://www.google.com/maps/search/?api=1&amp;query=Calle+Desiderio+Arias+34%2C+Bella+Vista%2C+Santo+Domingo" target="_blank" rel="noopener">Cómo llegar<span class="sr"> (abre Google Maps en una pestaña nueva)</span></a>
+        <p class="aviso-pasado">Este encuentro se realizó el sábado 17 de octubre de 2026. Mira las fotos y los videos en la galería.</p>
+        <a class="btn btn-oro" href="galeria.html#videos-iglesia">Ver videos del encuentro</a>
       </div>
     </div>
   </section>
@@ -189,92 +202,37 @@
     </div>
   </section>
 
-  <section class="bloque fundacion" id="fundacion">
+  <section class="bloque" id="contacto">
     <div class="contenedor">
       <div class="titulo">
-        <img src="assets/fundacion-logo.png" alt="Fundación Apalir — Aposento Alto de Liberación Restauradora" width="937" height="408" loading="lazy">
-        <span class="eyebrow">La obra social de Apalir</span>
-        <h2>Manos dispuestas <em>a servir</em></h2>
-        <p>La Fundación Apalir lleva el amor de Cristo a la práctica: alimentos, salud, útiles escolares y alegría para envejecientes, familias y niños de nuestras comunidades.</p>
-      </div>
-      <div class="programas">
-        <article class="programa">
-          <figure class="foto"><img src="assets/fundacion/envejecientes.jpg" alt="Una voluntaria de la Fundación Apalir entrega una funda con alimentos a un señor mayor sentado." width="780" height="1040" loading="lazy"></figure>
-          <div class="txt"><h3>Entregas a envejecientes</h3><p>Visitamos a personas mayores y encamadas con alimentos, pañales y artículos de higiene.</p></div>
-        </article>
-        <article class="programa">
-          <figure class="foto"><img src="assets/fundacion/tarde-con-jesus.jpg" alt="Gran grupo de niños y familias reunidos bajo un techo en la actividad Una tarde con Jesús." width="900" height="675" loading="lazy"></figure>
-          <div class="txt"><h3>Una tarde con Jesús</h3><p>Una tarde de alabanza, comida y regalos para cientos de niños y sus familias.</p></div>
-        </article>
-        <article class="programa">
-          <figure class="foto"><img src="assets/fundacion/regreso-a-clases.jpg" alt="Niños con sus mochilas nuevas frente al letrero De Regreso a Clases." width="900" height="1200" loading="lazy"></figure>
-          <div class="txt"><h3>De regreso a clases</h3><p>Mochilas y útiles escolares para que ningún niño empiece el año sin lo necesario.</p></div>
-        </article>
-        <article class="programa">
-          <figure class="foto"><img src="assets/fundacion/operativo-medico.jpg" alt="Voluntarias organizan medicamentos en una mesa durante un operativo médico." width="900" height="1200" loading="lazy"></figure>
-          <div class="txt"><h3>Operativos médicos</h3><p>Consultas, toma de presión y medicamentos gratuitos en las comunidades.</p></div>
-        </article>
-        <article class="programa">
-          <figure class="foto"><img src="assets/fundacion/comida.jpg" alt="Dos voluntarias de la Fundación Apalir sirven arroz, carne y pan en bandejas." width="900" height="900" loading="lazy"></figure>
-          <div class="txt"><h3>Comidas compartidas</h3><p>Cocinamos y servimos platos calientes en cada actividad de la fundación.</p></div>
-        </article>
-        <article class="programa">
-          <figure class="foto"><img src="assets/fundacion/juguetes.jpg" alt="Mesa llena de juguetes, pelotas y peluches listos para regalar a los niños." width="900" height="1200" loading="lazy"></figure>
-          <div class="txt"><h3>Juguetes para los niños</h3><p>Regalos que llevan una sonrisa a niños de familias de escasos recursos.</p></div>
-        </article>
-      </div>
-
-      <a class="btn btn-oro ver-mas" href="galeria.html#fotos-fundacion">Ver todas las fotos y videos de la Fundación</a>
-
-      <div class="donar" id="donar">
-        <div>
-          <span class="eyebrow">Apoya la obra</span>
-          <h3>Tu donación se convierte en comida, medicinas y útiles</h3>
-          <p>Cada aporte a la Fundación Apalir llega a un envejeciente, una familia o un niño. Si deseas donar alimentos, ropa o juguetes, escríbenos y coordinamos la entrega.</p>
-        </div>
-        <div class="cuenta">
-          <dl>
-            <div><dt>Banco</dt><dd>Banco BHD (República Dominicana)</dd></div>
-            <div><dt>Cuenta n.º</dt><dd class="num js-cuenta">0989914-002-5</dd></div>
-            <div><dt>Código SWIFT</dt><dd>BCBHDOSDXXX</dd></div>
-            <div><dt>Correo de la fundación</dt><dd><a class="correo" href="mailto:fundacionapalir@gmail.com">fundacionapalir@gmail.com</a></dd></div>
-          </dl>
-          <div class="acciones">
-            <button class="btn btn-oro js-copiar" type="button">Copiar cuenta</button>
-            <span class="copiado" role="status" aria-live="polite"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bloque" id="visitanos">
-    <div class="contenedor">
-      <div class="titulo">
-        <span class="eyebrow">Planea tu visita</span>
-        <h2>Nos encantaría <em>recibirte</em></h2>
-        <p>Ven tal como eres. Si tienes preguntas antes de llegar, escríbenos o llámanos.</p>
+        <span class="eyebrow">Únete a nosotros</span>
+        <h2>Te esperamos en el <em>culto por Zoom</em></h2>
+        <p>Escríbenos y te enviamos el enlace para conectarte. Ven tal como eres.</p>
       </div>
       <div class="visita-grid">
-        <div class="panel">
-          <h3>Dónde nos reunimos</h3>
-          <address>
-            <div class="fila">
-              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-              <span>Calle Desiderio Arias #34, Bella Vista<br>Local Agrupación Médica — IDSS<br>Santo Domingo, República Dominicana</span>
+        <div class="panel revela" style="--i: 0">
+          <h3>Cultos virtuales</h3>
+          <div class="fila">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+            <div>
+              <ul class="cultos-dias"><li>Martes</li><li>Jueves</li><li>Sábados</li></ul>
             </div>
-          </address>
+          </div>
           <div class="fila">
             <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-            <span>Culto presencial: sábado 17 de octubre de 2026, 10:00 a. m.<br><span class="nota">Consulta las próximas fechas por correo o teléfono.</span></span>
+            <span>De 7:30 a 9:00 p. m. (hora de República Dominicana)</span>
           </div>
-          <a class="btn btn-oro" href="https://www.google.com/maps/search/?api=1&amp;query=Calle+Desiderio+Arias+34%2C+Bella+Vista%2C+Santo+Domingo" target="_blank" rel="noopener">Cómo llegar<span class="sr"> (abre Google Maps en una pestaña nueva)</span></a>
+          <div class="fila">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg>
+            <span>Por Zoom: te conectas desde el teléfono o la computadora.</span>
+          </div>
+          <a class="btn btn-oro" href="mailto:maribel.mocion@apalir.org.do?subject=Enlace%20de%20Zoom%20para%20los%20cultos">Pide el enlace de Zoom</a>
         </div>
-        <div class="panel" id="contacto">
+        <div class="panel revela" style="--i: 1">
           <h3>Contáctanos</h3>
           <div class="fila">
             <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-            <a href="mailto:laguerrera007@hotmail.com">laguerrera007@hotmail.com</a>
+            <a href="mailto:maribel.mocion@apalir.org.do">maribel.mocion@apalir.org.do</a>
           </div>
           <div class="fila">
             <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
@@ -286,6 +244,20 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="puente" data-tema="fundacion" aria-label="Fundación Apalir">
+    <div class="contenedor">
+      <span class="logo-f"><img src="assets/fundacion-logo.png" alt="Fundación Apalir" width="937" height="408" loading="lazy"></span>
+      <div>
+        <span class="eyebrow">Nuestra obra social</span>
+        <h2>Fundación Apalir: <em>manos dispuestas a servir</em></h2>
+        <p>Alimentos, salud, útiles escolares y alegría para envejecientes, familias y niños. Conoce sus programas y cómo puedes ayudar.</p>
+      </div>
+      <a class="btn btn-oro" href="fundacion.html">Visitar la Fundación
+        <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
   </section>
 </main>
@@ -301,12 +273,10 @@
         <h4>Navegación</h4>
         <ul>
           <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#cultos">Cultos por Zoom</a></li>
           <li><a href="#pastora">Pastora Maribel</a></li>
-          <li><a href="#evento">Eventos</a></li>
-          <li><a href="#fundacion">Fundación Apalir</a></li>
-          <li><a href="galeria.html">Galería de fotos y videos</a></li>
-          <li><a href="#donar">Donar</a></li>
+          <li><a href="galeria.html">Galería de la Iglesia</a></li>
+          <li><a href="fundacion.html">Fundación Apalir</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </div>
@@ -315,8 +285,7 @@
         <dl>
           <div><dt>RNC</dt><dd>430075442</dd></div>
           <div><dt>Registro censo ASFL</dt><dd>004355-2010</dd></div>
-          <div><dt>Correo</dt><dd><a href="mailto:laguerrera007@hotmail.com">laguerrera007@hotmail.com</a></dd></div>
-          <div><dt>Donaciones · Banco BHD</dt><dd>Cuenta 0989914-002-5</dd></div>
+          <div><dt>Correo</dt><dd><a href="mailto:maribel.mocion@apalir.org.do">maribel.mocion@apalir.org.do</a></dd></div>
         </dl>
       </div>
     </div>
@@ -324,41 +293,6 @@
   </div>
 </footer>
 
-<script>
-  // Menú móvil
-  const boton = document.querySelector('.menu-btn');
-  const menu = document.getElementById('menu');
-  boton.addEventListener('click', () => {
-    const abierto = menu.classList.toggle('abierto');
-    boton.setAttribute('aria-expanded', String(abierto));
-  });
-  menu.addEventListener('click', (e) => {
-    if (e.target.closest('a')) { menu.classList.remove('abierto'); boton.setAttribute('aria-expanded', 'false'); }
-  });
-
-  // Marca el culto como realizado cuando ya pasó (10:00 a. m. hora RD = UTC-4, ~3 h de duración)
-  const FIN_CULTO = new Date('2026-10-17T13:00:00-04:00');
-  if (Date.now() > FIN_CULTO.getTime()) {
-    document.getElementById('evento').classList.add('ya-paso');
-    document.querySelector('.js-etiqueta-culto').textContent = 'Último culto';
-    const estado = document.querySelector('.js-estado');
-    estado.textContent = 'Realizado';
-    estado.classList.add('pasado');
-  }
-  document.querySelector('.js-anio').textContent = new Date().getFullYear();
-
-  // Copiar el número de cuenta de donaciones
-  const copiar = document.querySelector('.js-copiar');
-  const avisoCopia = document.querySelector('.copiado');
-  copiar.addEventListener('click', async () => {
-    const numero = document.querySelector('.js-cuenta').textContent.trim();
-    try {
-      await navigator.clipboard.writeText(numero);
-      avisoCopia.textContent = 'Número copiado: ' + numero;
-    } catch (error) {
-      avisoCopia.textContent = 'No se pudo copiar. Anota el número: ' + numero;
-    }
-  });
-</script>
+<script src="assets/sitio.js?v=5" defer></script>
 </body>
 </html>

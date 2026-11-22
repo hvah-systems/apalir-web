@@ -1,23 +1,24 @@
 <!doctype html>
-<html lang="es">
+<html class="sin-js" lang="es" data-tema="{{TEMA}}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Galería | Iglesia y Fundación Apalir</title>
-<meta name="description" content="Fotos y videos de la Iglesia Apalir y de la obra social de la Fundación Apalir: cultos, eventos, entregas a envejecientes, Una tarde con Jesús y De regreso a clases.">
-<link rel="icon" href="assets/logo.png">
+<title>Galería | {{NOMBRE}}</title>
+<meta name="description" content="{{DESCRIPCION}}">
+<link rel="icon" href="{{LOGO}}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/sitio.css?v=3">
+<link rel="stylesheet" href="assets/sitio.css?v=7">
+<script>document.documentElement.classList.replace('sin-js', 'js');</script>
 </head>
 <body>
 <a class="salto" href="#contenido">Saltar al contenido</a>
 
 <header class="cabecera">
   <div class="contenedor">
-    <a class="marca" href="index.html" aria-label="Iglesia Apalir, inicio">
-      <img src="assets/logo.png" alt="Iglesia Apalir — Aposento Alto de Liberación Restauradora" width="505" height="192">
+    <a class="marca" href="{{INICIO}}" aria-label="{{NOMBRE}}, inicio">
+      <img src="{{LOGO}}" alt="{{NOMBRE}} — Aposento Alto de Liberación Restauradora" width="{{LOGO_W}}" height="{{LOGO_H}}">
     </a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
       <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -25,12 +26,7 @@
     </button>
     <nav class="nav" id="menu" aria-label="Principal">
       <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="index.html#pastora">Pastora</a></li>
-        <li><a href="index.html#fundacion">Fundación</a></li>
-        <li><a href="#fotos-iglesia" aria-current="page">Galería</a></li>
-        <li><a href="index.html#visitanos">Visítanos</a></li>
-        <li><a class="nav-cta" href="index.html#donar">Donar</a></li>
+{{NAV}}
       </ul>
     </nav>
   </div>
@@ -40,53 +36,35 @@
   <section class="galeria-cab">
     <div class="contenedor">
       <span class="eyebrow">Galería</span>
-      <h1>Momentos de la Iglesia y la <em>Fundación Apalir</em></h1>
-      <p>Cultos, celebraciones y la obra social de la Fundación, tal como los compartió la Pastora Maribel. Toca una foto para verla en grande.</p>
+      <h1>{{H1}}</h1>
+      <p>{{TEXTO}} Toca una foto para verla en grande.</p>
       <ul class="saltos">
-        <li><a href="#fotos-iglesia">Fotos de la Iglesia ({{N_FI}})</a></li>
-        <li><a href="#fotos-fundacion">Fotos de la Fundación ({{N_FF}})</a></li>
-        <li><a href="#videos-iglesia">Videos de la Iglesia ({{N_VI}})</a></li>
-        <li><a href="#videos-fundacion">Videos de la Fundación ({{N_VF}})</a></li>
+        <li><a href="#fotos">Fotos ({{N_F}})</a></li>
+        <li><a href="#videos">Videos ({{N_V}})</a></li>
       </ul>
     </div>
   </section>
 
-  <section class="galeria-bloque" id="fotos-iglesia">
+  <section class="galeria-bloque" id="fotos">
     <div class="contenedor">
-      <span class="eyebrow">Iglesia Apalir</span>
-      <h2>Fotos de la Iglesia <small>{{N_FI}} fotos</small></h2>
-      {{FOTOS_IGLESIA}}
+      <span class="eyebrow">{{NOMBRE}}</span>
+      <h2>Fotos <small>{{N_F}} fotos</small></h2>
+      {{FOTOS}}
     </div>
   </section>
 
-  <section class="galeria-bloque" id="fotos-fundacion">
+  <section class="galeria-bloque" id="videos" style="padding-bottom: 88px">
     <div class="contenedor">
-      <span class="eyebrow">Fundación Apalir</span>
-      <h2>Fotos de la Fundación <small>{{N_FF}} fotos</small></h2>
-      {{FOTOS_FUNDACION}}
-    </div>
-  </section>
-
-  <section class="galeria-bloque" id="videos-iglesia">
-    <div class="contenedor">
-      <span class="eyebrow">Iglesia Apalir</span>
-      <h2>Videos de la Iglesia <small>{{N_VI}} videos</small></h2>
-      {{VIDEOS_IGLESIA}}
-    </div>
-  </section>
-
-  <section class="galeria-bloque" id="videos-fundacion" style="padding-bottom: 88px">
-    <div class="contenedor">
-      <span class="eyebrow">Fundación Apalir</span>
-      <h2>Videos de la Fundación <small>{{N_VF}} videos</small></h2>
-      {{VIDEOS_FUNDACION}}
-      <a class="btn btn-oro ver-mas" href="index.html#donar">Apoya la obra de la Fundación</a>
+      <span class="eyebrow">{{NOMBRE}}</span>
+      <h2>Videos <small>{{N_V}} videos</small></h2>
+      {{VIDEOS}}
+      {{CTA}}
     </div>
   </section>
 </main>
 
 <dialog class="visor" aria-label="Foto ampliada">
-  <figure><img alt=""></figure>
+  <figure class="t-modal"><img alt=""></figure>
   <button class="visor-btn visor-cerrar" type="button" aria-label="Cerrar">×</button>
   <button class="visor-btn visor-ant" type="button" aria-label="Foto anterior">‹</button>
   <button class="visor-btn visor-sig" type="button" aria-label="Foto siguiente">›</button>
@@ -94,22 +72,12 @@
 
 <footer class="pie">
   <div class="contenedor">
-    <p class="legal">© <span class="js-anio">2026</span> Aposento Alto de Liberación Restauradora, Inc. · Santo Domingo, República Dominicana · <a href="index.html">Volver al inicio</a></p>
+    <p class="legal">© <span class="js-anio">2026</span> {{NOMBRE}} · Santo Domingo, República Dominicana · <a href="{{INICIO}}">Volver al inicio</a></p>
   </div>
 </footer>
 
+<script src="assets/sitio.js?v=5" defer></script>
 <script>
-  const boton = document.querySelector('.menu-btn');
-  const menu = document.getElementById('menu');
-  boton.addEventListener('click', () => {
-    const abierto = menu.classList.toggle('abierto');
-    boton.setAttribute('aria-expanded', String(abierto));
-  });
-  menu.addEventListener('click', (e) => {
-    if (e.target.closest('a')) { menu.classList.remove('abierto'); boton.setAttribute('aria-expanded', 'false'); }
-  });
-  document.querySelector('.js-anio').textContent = new Date().getFullYear();
-
   // Visor de fotos: dentro de cada grupo se avanza con los botones o las flechas del teclado
   const visor = document.querySelector('.visor');
   const grande = visor.querySelector('img');
@@ -124,12 +92,27 @@
   document.querySelectorAll('.mini').forEach((b) => b.addEventListener('click', () => {
     lista = [...b.closest('.rejilla').querySelectorAll('.mini')];
     mostrar(lista.indexOf(b));
-    visor.showModal();
+    abrir();
   }));
-  visor.querySelector('.visor-cerrar').addEventListener('click', () => visor.close());
+  // Abrir y cerrar con la transición Modal de transitions.dev
+  const marco = visor.querySelector('.t-modal');
+  const ms = (v) => parseFloat(getComputedStyle(document.documentElement).getPropertyValue(v)) || 0;
+  function abrir() {
+    marco.classList.remove('is-closing');
+    visor.showModal();
+    void marco.offsetWidth;
+    marco.classList.add('is-open');
+  }
+  function cerrar() {
+    marco.classList.remove('is-open');
+    marco.classList.add('is-closing');
+    setTimeout(() => { marco.classList.remove('is-closing'); visor.close(); }, ms('--modal-close-dur'));
+  }
+  visor.addEventListener('cancel', (e) => { e.preventDefault(); cerrar(); });
+  visor.querySelector('.visor-cerrar').addEventListener('click', cerrar);
   visor.querySelector('.visor-ant').addEventListener('click', () => mostrar(pos - 1));
   visor.querySelector('.visor-sig').addEventListener('click', () => mostrar(pos + 1));
-  visor.addEventListener('click', (e) => { if (e.target === visor || e.target.tagName === 'FIGURE') visor.close(); });
+  visor.addEventListener('click', (e) => { if (e.target === visor || e.target.tagName === 'FIGURE') cerrar(); });
   visor.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') mostrar(pos - 1);
     if (e.key === 'ArrowRight') mostrar(pos + 1);

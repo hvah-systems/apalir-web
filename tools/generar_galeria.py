@@ -30,7 +30,7 @@ UMBRAL_DUPLICADO = 5  # distancia de hash: menor o igual = foto casi idéntica
 
 def dhash(im, lado=8):
     g = im.convert('L').resize((lado + 1, lado), Image.LANCZOS)
-    px = list(g.getdata())
+    px = list(g.get_flattened_data()) if hasattr(g, "get_flattened_data") else list(g.getdata())
     return sum(1 << i for i in range(lado * lado)
                if px[(i // lado) * (lado + 1) + i % lado] > px[(i // lado) * (lado + 1) + i % lado + 1])
 
@@ -95,21 +95,57 @@ def rejilla_videos(lista, titulo):
         for i, (n, w, h) in enumerate(lista, 1)) + '\n</ul>'
 
 
-def pagina(f, v):
-    plantilla = open(os.path.join(RAIZ, 'tools', 'galeria.plantilla.html'), encoding='utf-8').read()
-    return (plantilla
-            .replace('{{FOTOS_IGLESIA}}', rejilla('iglesia', f['iglesia'], 'Iglesia Apalir'))
-            .replace('{{FOTOS_FUNDACION}}', rejilla('fundacion', f['fundacion'], 'Fundación Apalir'))
-            .replace('{{VIDEOS_IGLESIA}}', rejilla_videos(v['iglesia'], 'Iglesia Apalir'))
-            .replace('{{VIDEOS_FUNDACION}}', rejilla_videos(v['fundacion'], 'Fundación Apalir'))
-            .replace('{{N_FI}}', str(len(f['iglesia']))).replace('{{N_FF}}', str(len(f['fundacion'])))
-            .replace('{{N_VI}}', str(len(v['iglesia']))).replace('{{N_VF}}', str(len(v['fundacion']))))
+def enlace(href, texto, clase=''):
+    c = f' class="{clase}"' if clase else ''
+    return f'        <li><a{c} href="{href}">{texto}</a></li>'
+
+
+SITIOS = {
+    'iglesia': dict(
+        archivo='galeria.html', NOMBRE='Iglesia Apalir', INICIO='index.html', LOGO='assets/logo.png',
+        LOGO_W='505', LOGO_H='192',
+        H1='Momentos de la <em>Iglesia Apalir</em>',
+        TEXTO='Cultos, celebraciones y encuentros de la familia Apalir junto a la Pastora Maribel.',
+        DESCRIPCION='Fotos y videos de la Iglesia Apalir: cultos, el encuentro Quitando la piedra y '
+                    'celebraciones junto a la Pastora Maribel.',
+        NAV=[('index.html', 'Inicio'), ('index.html#pastora', 'Pastora'), ('#fotos', 'Galería'),
+             ('fundacion.html', 'Fundación'), ('index.html#contacto', 'Contacto'),
+             ('index.html#cultos', 'Cultos por Zoom', 'nav-cta')],
+        CTA='<a class="btn btn-oro ver-mas" href="index.html#cultos">Únete a un culto por Zoom</a>'),
+    'fundacion': dict(
+        archivo='galeria-fundacion.html', NOMBRE='Fundación Apalir', INICIO='fundacion.html',
+        LOGO='assets/fundacion-logo.png', LOGO_W='937', LOGO_H='408',
+        H1='La obra de la <em>Fundación Apalir</em>',
+        TEXTO='Entregas a envejecientes, Una tarde con Jesús, De regreso a clases y operativos médicos.',
+        DESCRIPCION='Fotos y videos de la Fundación Apalir: entregas a envejecientes, Una tarde con '
+                    'Jesús, De regreso a clases y operativos médicos.',
+        NAV=[('fundacion.html', 'Inicio'), ('fundacion.html#programas', 'Programas'), ('#fotos', 'Galería'),
+             ('fundacion.html#contacto', 'Contacto'), ('index.html', 'Iglesia Apalir'),
+             ('fundacion.html#donar', 'Donar', 'nav-cta')],
+        CTA='<a class="btn btn-oro ver-mas" href="fundacion.html#donar">Apoya la obra de la Fundación</a>'),
+}
+
+
+def pagina(tema, fotos_tema, videos_tema):
+    s = SITIOS[tema]
+    t = open(os.path.join(RAIZ, 'tools', 'galeria.plantilla.html'), encoding='utf-8').read()
+    valores = {k: v for k, v in s.items() if k not in ('archivo', 'NAV')}
+    valores.update(TEMA=tema, NAV='\n'.join(enlace(*n) for n in s['NAV']),
+                   FOTOS=rejilla(tema, fotos_tema, s['NOMBRE']),
+                   VIDEOS=rejilla_videos(videos_tema, s['NOMBRE']),
+                   N_F=str(len(fotos_tema)), N_V=str(len(videos_tema)))
+    for k, v in valores.items():
+        t = t.replace('{{' + k + '}}', v)
+    assert '{{' not in t, 'quedó un hueco sin llenar en la plantilla'
+    return s['archivo'], t
 
 
 if __name__ == '__main__':
     f, dup = fotos()
     v = videos(sys.argv[1])
-    open(os.path.join(RAIZ, 'galeria.html'), 'w', encoding='utf-8').write(pagina(f, v))
+    for tema in ('iglesia', 'fundacion'):
+        archivo, contenido = pagina(tema, f[tema], v[tema])
+        open(os.path.join(RAIZ, archivo), 'w', encoding='utf-8').write(contenido)
     assert len(f['iglesia']) + len(f['fundacion']) + dup + len(EXCLUIR) == 520, 'faltan fotos por contar'
     print(f"fotos iglesia={len(f['iglesia'])} fundacion={len(f['fundacion'])} duplicadas={dup} "
           f"excluidas={len(EXCLUIR)} | videos iglesia={len(v['iglesia'])} fundacion={len(v['fundacion'])}")

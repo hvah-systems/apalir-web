@@ -1,22 +1,48 @@
 :root {
-  --ciruela: #4a2f3a;
-  --ciruela-osc: #2f1d25;
-  --ciruela-med: #6b4a55;
-  --arena: #e7d38c;
-  --arena-osc: #cdb463;
-  --crema: #f8f3ea;
-  --crema-2: #efe6d6;
-  --taupe: #a89e8c;
-  --celeste: #3fb8e0;
-  --texto: #2b2026;
-  --texto-suave: #5f5258;
   --blanco: #ffffff;
   --radio: 18px;
-  --sombra: 0 10px 30px rgba(47, 29, 37, .12);
+  --sombra: 0 10px 30px rgba(0, 0, 0, .10);
   --serif: "Fraunces", Georgia, serif;
   --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   --display: "Bebas Neue", "Arial Narrow", sans-serif;
   color-scheme: light;
+}
+/* Iglesia Apalir: celeste #56cbf6 y azul #62b5dd de su portada, sobre blanco */
+:root, [data-tema="iglesia"] {
+  --ciruela: #0f4c75;
+  --ciruela-osc: #0b2f48;
+  --ciruela-med: #2c77a6;
+  --arena: #56cbf6;
+  --arena-osc: #34b6ea;
+  --crema: #f3f9fd;
+  --crema-2: #dbecf6;
+  --taupe: #8eabc0;
+  --celeste: #1d8cc4;
+  --texto: #13212c;
+  --texto-suave: #46596a;
+  --tinte: #e6f5fc;
+  --claro: rgba(243, 249, 253, .88);
+  --linea-clara: rgba(86, 203, 246, .45);
+  --hero-grad: linear-gradient(100deg, rgba(11, 47, 72, .92) 28%, rgba(11, 47, 72, .55) 60%, rgba(29, 108, 160, .35));
+}
+/* Fundación Apalir: los colores de las manos de su logo (ciruela, rojo, coral, arena) */
+[data-tema="fundacion"] {
+  --ciruela: #6d4554;
+  --ciruela-osc: #44282f;
+  --ciruela-med: #8f5a68;
+  --arena: #efd38c;
+  --arena-osc: #ddbb63;
+  --crema: #fbf6ef;
+  --crema-2: #f1e3d5;
+  --taupe: #b39c97;
+  --celeste: #c45761;
+  --texto: #2b1d22;
+  --texto-suave: #62505a;
+  --tinte: #fdeee9;
+  --claro: rgba(251, 246, 239, .88);
+  --linea-clara: rgba(239, 211, 140, .45);
+  --hero-grad: linear-gradient(100deg, rgba(68, 40, 47, .93) 28%, rgba(68, 40, 47, .6) 60%, rgba(196, 87, 97, .4));
+  color: var(--texto);
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 84px; }
@@ -59,13 +85,13 @@ a { color: inherit; }
 /* Hero */
 .hero { position: relative; color: var(--crema); background: var(--ciruela-osc); overflow: hidden; }
 .hero::before { content: ""; position: absolute; inset: 0; background: url("piedra.jpg") center/cover no-repeat; opacity: .28; }
-.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(47, 29, 37, .97) 30%, rgba(74, 47, 58, .65)); }
+.hero::after { content: ""; position: absolute; inset: 0; background: var(--hero-grad); }
 .hero .contenedor { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; padding: 80px 0 96px; }
 .eyebrow { display: inline-flex; align-items: center; gap: 12px; text-transform: uppercase; letter-spacing: .18em; font-size: .78rem; font-weight: 700; color: var(--arena); }
 .eyebrow::before { content: ""; width: 34px; height: 2px; background: currentColor; }
 .hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2.3rem, 5vw, 3.7rem); line-height: 1.08; margin: 18px 0 18px; }
 .hero h1 em { color: var(--arena); font-weight: 500; }
-.hero p.lead { font-size: 1.15rem; max-width: 34ch; color: rgba(248, 243, 234, .88); margin: 0 0 30px; }
+.hero p.lead { font-size: 1.15rem; max-width: 34ch; color: var(--claro); margin: 0 0 30px; }
 .hero .acciones { display: flex; flex-wrap: wrap; gap: 14px; }
 .hero figure { margin: 0; justify-self: center; }
 .hero figure img { width: min(360px, 100%); border-radius: var(--radio); box-shadow: 0 24px 60px rgba(0, 0, 0, .45); border: 6px solid rgba(255, 255, 255, .08); transform: rotate(2deg); }
@@ -118,7 +144,7 @@ section.bloque { padding: 96px 0; }
 .versiculo .caja { display: flex; align-items: center; gap: 28px; background: var(--ciruela-osc); color: var(--crema); border-radius: 24px; padding: 40px 44px; }
 .versiculo .comillas { font-family: var(--serif); font-size: 5rem; line-height: .6; color: var(--arena); }
 .versiculo blockquote { margin: 0; flex: 1; font-family: var(--serif); font-style: italic; font-size: clamp(1.25rem, 2.6vw, 1.75rem); line-height: 1.35; }
-.versiculo .ref { font-weight: 700; color: var(--arena); white-space: nowrap; padding-left: 28px; border-left: 1px solid rgba(231, 211, 140, .4); }
+.versiculo .ref { font-weight: 700; color: var(--arena); white-space: nowrap; padding-left: 28px; border-left: 1px solid var(--linea-clara); }
 
 /* Visítanos */
 .visita-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
@@ -132,7 +158,7 @@ section.bloque { padding: 96px 0; }
 .panel .btn-oro { margin-top: 6px; }
 
 /* Pie */
-.pie { background: var(--ciruela-osc); color: rgba(248, 243, 234, .85); padding: 64px 0 28px; font-size: .92rem; }
+.pie { background: var(--ciruela-osc); color: var(--claro); padding: 64px 0 28px; font-size: .92rem; }
 .pie-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 36px; }
 .pie .logo-pie { background: var(--blanco); border-radius: 14px; padding: 10px 14px; display: inline-block; margin-bottom: 16px; }
 .pie .logo-pie img { height: 46px; width: auto; }
@@ -161,20 +187,20 @@ section.bloque { padding: 96px 0; }
 .pastora-texto .btn-oro { margin-top: 4px; }
 
 /* Fundación */
-.fundacion { background: #e9f6fb; }
+.fundacion { background: var(--tinte); }
 .fundacion .titulo { max-width: 700px; }
 .fundacion .titulo img { width: min(300px, 80%); margin: 0 auto 26px; }
-.fundacion .titulo h2 em { color: #1d8fb8; }
+.fundacion .titulo h2 em { color: var(--celeste); }
 .programas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.programa { background: var(--blanco); border-radius: var(--radio); overflow: hidden; box-shadow: 0 2px 0 #d3ebf3; border: 1px solid #d3ebf3; }
+.programa { background: var(--blanco); border-radius: var(--radio); overflow: hidden; box-shadow: 0 2px 0 var(--crema-2); border: 1px solid var(--crema-2); }
 .programa .foto { border-radius: 0; aspect-ratio: 4 / 3; }
 .programa div.txt { padding: 22px 24px 26px; }
 .programa h3 { font-family: var(--serif); font-weight: 600; font-size: 1.25rem; margin: 0 0 6px; color: var(--ciruela); }
 .programa p { margin: 0; color: var(--texto-suave); font-size: .97rem; }
 .donar { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; margin-top: 56px; background: var(--ciruela-osc); color: var(--crema); border-radius: 24px; padding: 44px; }
 .donar h3 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.15; margin: 12px 0 12px; }
-.donar p { color: rgba(248, 243, 234, .85); margin: 0; }
-.cuenta { background: rgba(255, 255, 255, .06); border: 1px solid rgba(231, 211, 140, .35); border-radius: var(--radio); padding: 26px 28px; }
+.donar p { color: var(--claro); margin: 0; }
+.cuenta { background: rgba(255, 255, 255, .06); border: 1px solid var(--linea-clara); border-radius: var(--radio); padding: 26px 28px; }
 .cuenta dl { margin: 0 0 20px; display: grid; gap: 12px; }
 .cuenta dt { font-size: .74rem; text-transform: uppercase; letter-spacing: .12em; color: var(--taupe); }
 .cuenta dd { margin: 2px 0 0; font-weight: 700; font-size: 1.1rem; color: var(--crema); }
@@ -219,9 +245,9 @@ section.bloque { padding: 96px 0; }
 .galeria-cab { background: var(--ciruela-osc); color: var(--crema); padding: 64px 0 56px; }
 .galeria-cab h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.08; margin: 16px 0 12px; }
 .galeria-cab h1 em { color: var(--arena); font-weight: 500; }
-.galeria-cab p { color: rgba(248, 243, 234, .85); max-width: 60ch; margin: 0 0 24px; }
+.galeria-cab p { color: var(--claro); max-width: 60ch; margin: 0 0 24px; }
 .saltos { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0; padding: 0; }
-.saltos a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 1.5px solid rgba(231, 211, 140, .5); color: var(--crema); text-decoration: none; font-weight: 600; }
+.saltos a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--linea-clara); color: var(--crema); text-decoration: none; font-weight: 600; }
 .saltos a:hover { background: rgba(255, 255, 255, .08); }
 .galeria-bloque { padding: 72px 0 24px; }
 .galeria-bloque + .galeria-bloque { padding-top: 40px; }
@@ -251,3 +277,171 @@ section.bloque { padding: 96px 0; }
   .rejilla.videos { grid-template-columns: repeat(2, 1fr); }
   .rejilla li { border-radius: 8px; }
 }
+
+/* Portada de la Fundación con su propia foto */
+/* Puente de la Iglesia hacia la Fundación (lleva los colores de la Fundación) */
+.puente { background: var(--ciruela-osc); color: var(--crema); }
+.puente .contenedor { display: grid; grid-template-columns: auto 1fr auto; gap: 36px; align-items: center; padding: 56px 0; }
+.puente .logo-f { background: var(--blanco); border-radius: 16px; padding: 14px 18px; }
+.puente .logo-f img { width: 220px; }
+.puente h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.15; margin: 10px 0 8px; }
+.puente h2 em { color: var(--arena); font-weight: 500; }
+.puente p { color: var(--claro); margin: 0; max-width: 56ch; }
+.cultos-dias { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 0; padding: 0; list-style: none; }
+.cultos-dias li { background: var(--tinte); color: var(--ciruela); border-radius: 999px; padding: 4px 12px; font-weight: 700; font-size: .9rem; }
+@media (max-width: 900px) { .puente .contenedor { grid-template-columns: 1fr; gap: 22px; } }
+[data-tema="fundacion"] .hero figure img { width: min(480px, 100%); }
+
+/* ============ Movimiento y gráficos ============ */
+/* Tokens y snippets de transitions.dev: Texts reveal (18) y Modal (06) */
+:root {
+  --stagger-dur: 500ms;
+  --stagger-distance: 12px;
+  --stagger-stagger: 40ms;
+  --stagger-blur: 3px;
+  --stagger-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --modal-open-dur: 250ms;
+  --modal-close-dur: 150ms;
+  --modal-scale: 0.96;
+  --modal-scale-close: 0.96;
+  --modal-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+.t-stagger-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(var(--stagger-distance));
+  filter: blur(var(--stagger-blur));
+  transition:
+    opacity   var(--stagger-dur) var(--stagger-ease),
+    transform var(--stagger-dur) var(--stagger-ease),
+    filter    var(--stagger-dur) var(--stagger-ease);
+  will-change: transform, opacity, filter;
+}
+.t-stagger-line--2 { transition-delay: var(--stagger-stagger); }
+.t-stagger-line--3 { transition-delay: calc(var(--stagger-stagger) * 3); }
+.t-stagger-line--4 { transition-delay: calc(var(--stagger-stagger) * 5); }
+.t-stagger-line--5 { transition-delay: calc(var(--stagger-stagger) * 7); }
+.t-stagger.is-shown .t-stagger-line {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+.t-modal {
+  transform-origin: center;
+  transform: scale(var(--modal-scale));
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform var(--modal-open-dur) var(--modal-ease),
+    opacity   var(--modal-open-dur) var(--modal-ease);
+  will-change: transform, opacity;
+}
+.t-modal.is-open {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+.t-modal.is-closing {
+  transform: scale(var(--modal-scale-close));
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform var(--modal-close-dur) var(--modal-ease),
+    opacity   var(--modal-close-dur) var(--modal-ease);
+}
+html:not(.js) .t-stagger-line { opacity: 1; transform: none; filter: none; }
+
+/* Portada grande con foto de fondo en zoom lento */
+:root, [data-tema="iglesia"] { --hero-foto: url("iglesia-fondo.jpg"); --ola-1: rgba(86, 203, 246, .30); --ola-2: rgba(98, 181, 221, .55); }
+[data-tema="fundacion"] { --hero-foto: url("fundacion/tarde-con-jesus.jpg"); --ola-1: rgba(217, 140, 126, .45); --ola-2: rgba(230, 219, 181, .55); }
+.hero { min-height: min(88vh, 860px); display: flex; align-items: center; }
+.hero > .contenedor { padding: 88px 0 168px; }
+.hero::before { background-image: var(--hero-foto); background-position: center 30%; opacity: .75; animation: zoom-lento 26s ease-in-out infinite alternate; }
+@keyframes zoom-lento { from { transform: scale(1); } to { transform: scale(1.12) translate(-1.5%, -1%); } }
+.hero h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
+.hero figure img { animation: flotar 7s ease-in-out infinite alternate; }
+@keyframes flotar { from { transform: rotate(2deg) translateY(0); } to { transform: rotate(-1deg) translateY(-12px); } }
+
+/* Ondas animadas al pie de la portada (como las de la portada de la Iglesia) */
+.ondas { position: absolute; left: 0; right: 0; bottom: -1px; height: 130px; z-index: 1; pointer-events: none; overflow: hidden; }
+.ondas svg { position: absolute; bottom: 0; left: 0; width: 200%; height: 100%; }
+.ondas .o1 { fill: var(--ola-1); animation: ola 22s linear infinite; }
+.ondas .o2 { fill: var(--ola-2); animation: ola 15s linear infinite reverse; }
+.ondas .o3 { fill: var(--crema); animation: ola 30s linear infinite; }
+@keyframes ola { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.franja { margin-top: -72px; }
+
+/* Símbolo de manos girando en la portada de la Fundación */
+.manos-giro { position: absolute; right: -60px; top: 50%; width: 420px; height: 420px; margin-top: -210px; opacity: .14; z-index: 0; animation: girar 60s linear infinite; pointer-events: none; }
+@keyframes girar { to { transform: rotate(360deg); } }
+
+/* Cinta de fotos en movimiento */
+.cinta { padding: 80px 0 40px; overflow: hidden; }
+.cinta-cab { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
+.cinta-cab h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.1; margin: 12px 0 0; color: var(--ciruela); }
+.cinta-cab h2 em { color: var(--celeste); font-weight: 500; }
+.cinta-cab .eyebrow { color: var(--ciruela-med); }
+.cinta-ctrl { display: flex; gap: 10px; align-items: center; }
+.btn-pausa { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; border-radius: 999px; border: 1.5px solid var(--crema-2); background: var(--blanco); color: var(--ciruela); cursor: pointer; font: 700 .9rem var(--sans); padding: 0 16px; }
+.btn-pausa:hover { border-color: var(--ciruela-med); }
+.cinta-pista { display: grid; gap: 14px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.cinta-fila { display: flex; gap: 14px; width: max-content; animation: desliza 80s linear infinite; }
+.cinta-fila--inv { animation-direction: reverse; animation-duration: 95s; }
+.cinta:hover .cinta-fila, .cinta.pausada .cinta-fila { animation-play-state: paused; }
+.cinta-fila a { display: block; border-radius: 14px; overflow: hidden; flex: none; }
+.cinta-fila img { height: 210px; width: auto; display: block; transition: transform .5s ease; }
+.cinta-fila a:hover img { transform: scale(1.03); }
+@keyframes desliza { to { transform: translateX(-50%); } }
+
+/* Cifras que cuentan al aparecer */
+.cifras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 8px; }
+.cifra { background: var(--blanco); border: 1px solid var(--crema-2); border-radius: var(--radio); padding: 30px 26px; text-align: center; }
+.cifra b { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(3.4rem, 7vw, 5rem); line-height: 1; color: var(--celeste); letter-spacing: .02em; }
+.cifra span { display: block; margin-top: 8px; font-weight: 600; color: var(--ciruela); }
+
+/* Tarjetas con el color de cada mano del logo */
+[data-tema="fundacion"] .programa { border-top: 6px solid var(--mano, #d98c7e); }
+[data-tema="fundacion"] .programa:nth-child(6n+1) { --mano: #d98c7e; }
+[data-tema="fundacion"] .programa:nth-child(6n+2) { --mano: #c45761; }
+[data-tema="fundacion"] .programa:nth-child(6n+3) { --mano: #e6c879; }
+[data-tema="fundacion"] .programa:nth-child(6n+4) { --mano: #6d4554; }
+[data-tema="fundacion"] .programa:nth-child(6n+5) { --mano: #56cbf6; }
+[data-tema="fundacion"] .programa:nth-child(6n+6) { --mano: #d98c7e; }
+[data-tema="fundacion"] .programa h3::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--mano); margin-right: 10px; vertical-align: middle; }
+
+/* Tarjetas que se elevan al pasar el puntero; aparecen una vez al entrar en pantalla */
+.pilar, .programa, .panel, .cifra { transition: transform .25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow .25s ease; }
+.pilar:hover, .programa:hover, .panel:hover, .cifra:hover { transform: translateY(-2px); box-shadow: var(--sombra); }
+.btn { transition: transform .15s ease, background .15s ease, box-shadow .15s ease; }
+.btn:active { transform: translateY(1px) scale(.98); }
+html.js .revela { opacity: 0; transform: translateY(18px); transition: opacity .6s cubic-bezier(0.22, 1, 0.36, 1), transform .6s cubic-bezier(0.22, 1, 0.36, 1); transition-delay: calc(var(--i, 0) * 70ms); }
+html.js .revela.visto { opacity: 1; transform: none; }
+
+/* Menú del teléfono: aparece desde el botón (Menu dropdown) */
+@media (max-width: 760px) {
+  .nav { display: block; visibility: hidden; opacity: 0; transform: translateY(-8px) scale(0.97); transform-origin: top right; transition: opacity 150ms ease, transform 150ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 150ms; }
+  .nav.abierto { visibility: visible; opacity: 1; transform: none; transition: opacity 250ms ease, transform 250ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s; }
+  .hero > .contenedor { padding: 56px 0 140px; }
+  .cinta-fila img { height: 140px; }
+  .cifras { grid-template-columns: 1fr; }
+  .manos-giro { width: 260px; height: 260px; margin-top: -130px; right: -90px; }
+  .ondas { height: 80px; }
+}
+@media (max-width: 900px) { .cifras { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 560px) { .cifras { grid-template-columns: 1fr; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .t-stagger-line { transition: none !important; }
+  .t-modal { transition: none !important; }
+  .hero::before, .hero figure img, .ondas path, .manos-giro, .cinta-fila { animation: none !important; }
+  .cinta-pista { overflow-x: auto; }
+  html.js .revela { opacity: 1; transform: none; transition: none; }
+  .nav { transition: none !important; }
+}
+/* En pantallas angostas el texto va encima de la foto: degradado vertical más oscuro */
+:root, [data-tema="iglesia"] { --hero-grad-movil: linear-gradient(180deg, rgba(11, 47, 72, .93) 0%, rgba(11, 47, 72, .86) 60%, rgba(11, 47, 72, .7)); }
+[data-tema="fundacion"] { --hero-grad-movil: linear-gradient(180deg, rgba(68, 40, 47, .94) 0%, rgba(68, 40, 47, .86) 60%, rgba(68, 40, 47, .7)); }
+@media (max-width: 900px) { .hero::after { background: var(--hero-grad-movil); } }
+/* Red de seguridad: si el JS no llega, el texto de la portada aparece igual */
+html.js .t-stagger:not(.is-shown) .t-stagger-line { animation: aparecer-seguro 0s linear 2.5s forwards; }
+@keyframes aparecer-seguro { to { opacity: 1; transform: none; filter: none; } }
