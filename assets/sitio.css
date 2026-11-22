@@ -445,3 +445,79 @@ html.js .revela.visto { opacity: 1; transform: none; }
 /* Red de seguridad: si el JS no llega, el texto de la portada aparece igual */
 html.js .t-stagger:not(.is-shown) .t-stagger-line { animation: aparecer-seguro 0s linear 2.5s forwards; }
 @keyframes aparecer-seguro { to { opacity: 1; transform: none; filter: none; } }
+
+/* ============ Viaje a Tierra Santa ============ */
+.hero-viaje::before { background-image: url("israel/palmeras.jpg"); filter: blur(5px) saturate(1.1); opacity: .55; }
+.hero-viaje > .contenedor { grid-template-columns: 1fr 1fr; }
+.collage { position: relative; height: 520px; }
+.collage figure { position: absolute; margin: 0; width: 46%; border-radius: 16px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 24px 50px rgba(0, 0, 0, .4); animation: flotar-c 8s ease-in-out infinite alternate; }
+.collage figure img { width: 100%; height: 100%; object-fit: cover; }
+.collage .c1 { left: 2%; top: 6%; height: 66%; --r: -5deg; transform: rotate(var(--r)); }
+.collage .c2 { left: 30%; top: 22%; height: 72%; --r: 2deg; transform: rotate(var(--r)); z-index: 2; animation-delay: -2s; }
+.collage .c3 { right: 0; top: 0; height: 58%; --r: 6deg; transform: rotate(var(--r)); animation-delay: -4s; }
+@keyframes flotar-c { from { transform: rotate(var(--r)) translateY(0); } to { transform: rotate(var(--r)) translateY(-14px); } }
+
+.mapa-bloque { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
+.mapa-bloque h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(2rem, 3.8vw, 2.8rem); line-height: 1.1; color: var(--ciruela); margin: 14px 0 14px; }
+.mapa-bloque h2 em { color: var(--celeste); font-weight: 500; }
+.mapa-bloque p { color: var(--texto-suave); font-size: 1.05rem; margin: 0 0 22px; }
+.paradas-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: p; }
+.paradas-lista li { counter-increment: p; display: flex; gap: 14px; align-items: center; font-weight: 600; color: var(--ciruela); }
+.paradas-lista li::before { content: counter(p); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--arena); color: var(--ciruela-osc); font-family: var(--display); font-size: 1.2rem; flex: none; }
+.mapa { background: linear-gradient(160deg, #eaf6fd, #d6ecf8); border-radius: 24px; padding: 18px; border: 1px solid var(--crema-2); }
+.mapa svg { width: 100%; height: auto; display: block; }
+.mapa .tierra { fill: #f7efe0; stroke: #e3d3b4; stroke-width: 1.5; }
+.mapa .agua { fill: #9fd8f2; }
+.mapa .rio { fill: none; stroke: #6fc3ea; stroke-width: 3; stroke-linecap: round; }
+.mapa .etq-mar { fill: #3f8fbd; font: italic 600 13px var(--serif); letter-spacing: .04em; }
+.mapa .ruta { fill: none; stroke: var(--ciruela); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 900; stroke-dashoffset: 900; transition: stroke-dashoffset 3s cubic-bezier(0.22, 1, 0.36, 1) .3s; }
+.mapa .ruta-guia { fill: none; stroke: var(--ciruela); stroke-width: 3; stroke-dasharray: 2 8; stroke-linecap: round; opacity: .25; }
+.mapa .punto circle { fill: var(--arena); stroke: var(--ciruela-osc); stroke-width: 2.5; }
+.mapa .punto text { fill: var(--ciruela-osc); font: 700 12.5px var(--sans); paint-order: stroke; stroke: #fff; stroke-width: 4px; stroke-linejoin: round; }
+.mapa .punto { opacity: 0; transform: translateY(6px); transition: opacity .5s ease, transform .5s ease; transition-delay: calc(.6s + var(--n) * .55s); }
+.traza.visto .ruta { stroke-dashoffset: 0; }
+.traza.visto .punto { opacity: 1; transform: none; }
+.mapa .pulso { fill: none; stroke: var(--arena-osc); stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: pulso 2.4s ease-out infinite; }
+@keyframes pulso { from { transform: scale(.6); opacity: .9; } to { transform: scale(2.4); opacity: 0; } }
+
+.recorrido { position: relative; display: grid; gap: 72px; margin-top: 12px; }
+.recorrido::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; margin-left: -1.5px; background: linear-gradient(var(--arena), var(--ciruela-med)); border-radius: 3px; }
+.parada { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; position: relative; }
+.parada::after { content: ""; position: absolute; left: 50%; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; background: var(--arena); border: 4px solid var(--ciruela-osc); box-shadow: 0 0 0 6px var(--crema); }
+.parada:nth-child(even) .parada-foto { order: 2; }
+.parada-foto { margin: 0; border-radius: 22px; overflow: hidden; box-shadow: var(--sombra); aspect-ratio: 4 / 5; max-height: 560px; }
+.parada-foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.parada-foto:hover img { transform: scale(1.03); }
+.parada-num { font-family: var(--display); font-size: 4.2rem; line-height: .9; color: var(--celeste); opacity: .9; }
+.parada h3 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.12; color: var(--ciruela); margin: 6px 0 12px; }
+.parada p { color: var(--texto-suave); font-size: 1.05rem; margin: 0 0 16px; }
+.parada blockquote { margin: 0; padding: 14px 18px; border-left: 4px solid var(--arena); background: var(--tinte); border-radius: 0 12px 12px 0; font-family: var(--serif); font-style: italic; color: var(--ciruela); }
+.parada blockquote cite { display: block; margin-top: 6px; font-family: var(--sans); font-style: normal; font-weight: 700; font-size: .85rem; color: var(--ciruela-med); }
+
+.mosaico { list-style: none; margin: 0; padding: 0; columns: 4 220px; column-gap: 12px; }
+.mosaico li { break-inside: avoid; margin-bottom: 12px; border-radius: 14px; overflow: hidden; }
+.mosaico .mini { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.mosaico img { width: 100%; height: auto; display: block; transition: transform .5s ease; }
+.mosaico .mini:hover img { transform: scale(1.03); }
+
+.viaje-teaser { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
+.viaje-teaser .fotos3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.viaje-teaser .fotos3 .foto { aspect-ratio: 3 / 4; }
+.viaje-teaser .fotos3 .foto:nth-child(2) { transform: translateY(-22px); }
+
+@media (max-width: 900px) {
+  .hero-viaje > .contenedor, .mapa-bloque, .viaje-teaser { grid-template-columns: 1fr; }
+  .collage { height: 420px; max-width: 460px; }
+  .recorrido::before { left: 18px; }
+  .parada { grid-template-columns: 1fr; gap: 22px; padding-left: 48px; }
+  .parada::after { left: 18px; top: 24px; }
+  .parada:nth-child(even) .parada-foto { order: 0; }
+  .parada-foto { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 560px) { .collage { height: 340px; } }
+@media (prefers-reduced-motion: reduce) {
+  .collage figure, .mapa .pulso { animation: none !important; }
+  .mapa .ruta { stroke-dashoffset: 0; transition: none; }
+  .mapa .punto { opacity: 1; transform: none; transition: none; }
+}
+.hero-viaje::before { inset: -24px; }

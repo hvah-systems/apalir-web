@@ -108,7 +108,7 @@ SITIOS = {
         TEXTO='Cultos, celebraciones y encuentros de la familia Apalir junto a la Pastora Maribel.',
         DESCRIPCION='Fotos y videos de la Iglesia Apalir: cultos, el encuentro Quitando la piedra y '
                     'celebraciones junto a la Pastora Maribel.',
-        NAV=[('index.html', 'Inicio'), ('index.html#pastora', 'Pastora'), ('#fotos', 'Galería'),
+        NAV=[('index.html', 'Inicio'), ('index.html#pastora', 'Pastora'), ('viaje-israel.html', 'Viaje a Israel'), ('#fotos', 'Galería'),
              ('fundacion.html', 'Fundación'), ('index.html#contacto', 'Contacto'),
              ('index.html#cultos', 'Cultos por Zoom', 'nav-cta')],
         CTA='<a class="btn btn-oro ver-mas" href="index.html#cultos">Únete a un culto por Zoom</a>'),

@@ -93,5 +93,60 @@
     });
   }
 
+  // Visor de fotos (Modal de transitions.dev): dentro de cada grupo se avanza con botones o flechas
+  const visor = document.querySelector('.visor');
+  if (visor) {
+    const grande = visor.querySelector('img');
+    const marco = visor.querySelector('.t-modal');
+    const ms = (v) => parseFloat(getComputedStyle(document.documentElement).getPropertyValue(v)) || 0;
+    let lista = [];
+    let pos = 0;
+    const mostrar = (i) => {
+      pos = (i + lista.length) % lista.length;
+      grande.src = lista[pos].dataset.full;
+      grande.alt = lista[pos].querySelector('img').alt;
+    };
+    const abrir = () => {
+      marco.classList.remove('is-closing');
+      visor.showModal();
+      void marco.offsetWidth;
+      marco.classList.add('is-open');
+    };
+    const cerrar = () => {
+      marco.classList.remove('is-open');
+      marco.classList.add('is-closing');
+      setTimeout(() => { marco.classList.remove('is-closing'); visor.close(); }, ms('--modal-close-dur'));
+    };
+    document.querySelectorAll('.mini').forEach((b) => b.addEventListener('click', () => {
+      lista = [...b.closest('[data-grupo], .rejilla').querySelectorAll('.mini')];
+      mostrar(lista.indexOf(b));
+      abrir();
+    }));
+    visor.addEventListener('cancel', (e) => { e.preventDefault(); cerrar(); });
+    visor.querySelector('.visor-cerrar').addEventListener('click', cerrar);
+    visor.querySelector('.visor-ant').addEventListener('click', () => mostrar(pos - 1));
+    visor.querySelector('.visor-sig').addEventListener('click', () => mostrar(pos + 1));
+    visor.addEventListener('click', (e) => { if (e.target === visor || e.target.tagName === 'FIGURE') cerrar(); });
+    visor.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') mostrar(pos - 1);
+      if (e.key === 'ArrowRight') mostrar(pos + 1);
+    });
+  }
+
+  // Un solo video suena a la vez
+  const videos = document.querySelectorAll('video');
+  videos.forEach((v) => v.addEventListener('play', () => videos.forEach((o) => { if (o !== v) o.pause(); })));
+
+  // Dibujos que se trazan al entrar en pantalla (mapa de la ruta)
+  const trazos = document.querySelectorAll('.traza');
+  if (quietos || !('IntersectionObserver' in window)) {
+    trazos.forEach((el) => el.classList.add('visto'));
+  } else {
+    const obsT = new IntersectionObserver((entradas) => {
+      entradas.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('visto'); obsT.unobserve(en.target); } });
+    }, { threshold: 0.35 });
+    trazos.forEach((el) => obsT.observe(el));
+  }
+
   document.querySelectorAll('.js-anio').forEach((el) => { el.textContent = new Date().getFullYear(); });
 })();
