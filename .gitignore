@@ -1,0 +1,4 @@
+# Fotos y videos del chat: se publican solo en el servidor (no en el repositorio público)
+assets/galeria/
+assets/videos/
+.DS_Store
