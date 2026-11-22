@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Iglesia Apalir | Aposento Alto de Liberación Restauradora</title>
+<meta name="description" content="Iglesia Apalir — Aposento Alto de Liberación Restauradora. Cultos presenciales en Bella Vista, Santo Domingo. Te esperamos.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ciruela: #4a2f3a;
+    --ciruela-osc: #2f1d25;
+    --ciruela-med: #6b4a55;
+    --arena: #e7d38c;
+    --arena-osc: #cdb463;
+    --crema: #f8f3ea;
+    --crema-2: #efe6d6;
+    --taupe: #a89e8c;
+    --celeste: #3fb8e0;
+    --texto: #2b2026;
+    --texto-suave: #5f5258;
+    --blanco: #ffffff;
+    --radio: 18px;
+    --sombra: 0 10px 30px rgba(47, 29, 37, .12);
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --display: "Bebas Neue", "Arial Narrow", sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  body { margin: 0; font-family: var(--sans); color: var(--texto); background: var(--crema); line-height: 1.6; }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--celeste); outline-offset: 3px; border-radius: 6px; }
+  .contenedor { width: min(1140px, 100% - 32px); margin-inline: auto; }
+  .salto { position: absolute; left: -999px; top: 8px; background: var(--blanco); padding: 8px 14px; border-radius: 8px; z-index: 100; }
+  .salto:focus { left: 16px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .icono { width: 22px; height: 22px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Barra superior */
+  .anuncio { background: var(--ciruela-osc); color: var(--crema); font-size: .88rem; }
+  .anuncio .contenedor { display: flex; gap: 10px 18px; align-items: center; justify-content: center; flex-wrap: wrap; padding: 9px 0; text-align: center; }
+  .anuncio strong { color: var(--arena); font-weight: 700; letter-spacing: .02em; }
+  .anuncio a { color: var(--arena); font-weight: 600; text-underline-offset: 3px; }
+
+  /* Cabecera */
+  .cabecera { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, .96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--crema-2); }
+  .cabecera .contenedor { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; }
+  .marca img { height: 54px; width: auto; }
+  .menu-btn { display: none; align-items: center; gap: 8px; background: var(--crema); border: 1px solid var(--crema-2); border-radius: 999px; padding: 9px 16px; font: 600 .95rem var(--sans); color: var(--ciruela); cursor: pointer; }
+  .nav ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+  .nav a { display: block; padding: 8px 14px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: .95rem; color: var(--ciruela); }
+  .nav a:hover { background: var(--crema); }
+  .nav .nav-cta { background: var(--ciruela); color: var(--crema); }
+  .nav .nav-cta:hover { background: var(--ciruela-med); }
+
+  /* Botones */
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 999px; font-weight: 700; text-decoration: none; transition: transform .15s ease, background .15s ease; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-oro { background: var(--arena); color: var(--ciruela-osc); }
+  .btn-oro:hover { background: var(--arena-osc); }
+  .btn-linea { border: 1.5px solid currentColor; color: var(--crema); }
+  .btn-linea:hover { background: rgba(255, 255, 255, .08); }
+
+  /* Hero */
+  .hero { position: relative; color: var(--crema); background: var(--ciruela-osc); overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0; background: url("assets/piedra.jpg") center/cover no-repeat; opacity: .28; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(47, 29, 37, .97) 30%, rgba(74, 47, 58, .65)); }
+  .hero .contenedor { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; padding: 80px 0 96px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 12px; text-transform: uppercase; letter-spacing: .18em; font-size: .78rem; font-weight: 700; color: var(--arena); }
+  .eyebrow::before { content: ""; width: 34px; height: 2px; background: currentColor; }
+  .hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2.3rem, 5vw, 3.7rem); line-height: 1.08; margin: 18px 0 18px; }
+  .hero h1 em { color: var(--arena); font-weight: 500; }
+  .hero p.lead { font-size: 1.15rem; max-width: 34ch; color: rgba(248, 243, 234, .88); margin: 0 0 30px; }
+  .hero .acciones { display: flex; flex-wrap: wrap; gap: 14px; }
+  .hero figure { margin: 0; justify-self: center; }
+  .hero figure img { width: min(360px, 100%); border-radius: var(--radio); box-shadow: 0 24px 60px rgba(0, 0, 0, .45); border: 6px solid rgba(255, 255, 255, .08); transform: rotate(2deg); }
+  .hero figcaption { text-align: center; margin-top: 16px; font-family: var(--serif); font-style: italic; color: var(--arena); }
+
+  /* Franja de datos */
+  .franja { position: relative; z-index: 2; margin-top: -48px; }
+  .franja .tarjeta { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); }
+  .dato { display: flex; gap: 14px; padding: 24px 26px; align-items: flex-start; }
+  .dato + .dato { border-left: 1px solid var(--crema-2); }
+  .dato .icono { color: var(--ciruela-med); margin-top: 3px; }
+  .dato small { display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; font-weight: 700; color: var(--texto-suave); }
+  .dato b { display: block; font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--ciruela); line-height: 1.25; margin-top: 4px; }
+  .dato span.det { font-size: .92rem; color: var(--texto-suave); }
+  .pastilla { background: var(--arena); color: var(--ciruela-osc); border-radius: 999px; padding: 2px 10px; letter-spacing: .04em; text-transform: none; font-size: .72rem; }
+  .pastilla.pasado { background: var(--crema-2); color: var(--texto-suave); }
+
+  /* Secciones */
+  section.bloque { padding: 96px 0; }
+  .titulo { text-align: center; max-width: 640px; margin: 0 auto 52px; }
+  .titulo .eyebrow { color: var(--ciruela-med); }
+  .titulo h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.9rem, 3.6vw, 2.6rem); line-height: 1.15; margin: 14px 0 12px; color: var(--ciruela); }
+  .titulo h2 em { color: var(--celeste); font-weight: 500; }
+  .titulo p { color: var(--texto-suave); margin: 0; font-size: 1.05rem; }
+
+  .pilares { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .pilar { background: var(--blanco); border-radius: var(--radio); padding: 32px 28px; box-shadow: 0 2px 0 var(--crema-2); border: 1px solid var(--crema-2); }
+  .pilar .circulo { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; background: var(--ciruela); color: var(--arena); margin-bottom: 20px; }
+  .pilar h3 { font-family: var(--serif); font-weight: 600; font-size: 1.35rem; margin: 0 0 8px; color: var(--ciruela); }
+  .pilar p { margin: 0 0 14px; color: var(--texto-suave); }
+  .pilar cite { font-style: normal; font-size: .85rem; font-weight: 700; color: var(--ciruela-med); }
+
+  /* Evento */
+  .evento { background: var(--crema-2); }
+  .evento-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
+  .evento-img { margin: 0; }
+  .evento-img img { border-radius: var(--radio); box-shadow: var(--sombra); }
+  .evento-img a { font-size: .9rem; font-weight: 600; color: var(--ciruela-med); display: inline-block; margin-top: 12px; text-underline-offset: 3px; }
+  .evento .eyebrow { color: var(--ciruela-med); }
+  .evento h2 { font-family: var(--display); font-weight: 400; font-size: clamp(3rem, 7vw, 5rem); line-height: .95; letter-spacing: .01em; margin: 14px 0 6px; color: var(--ciruela); }
+  .evento .sub { font-family: var(--serif); font-style: italic; font-size: 1.25rem; color: var(--ciruela-med); margin: 0 0 24px; }
+  .lista-datos { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 14px; }
+  .lista-datos li { display: flex; gap: 14px; align-items: flex-start; background: var(--blanco); border-radius: 14px; padding: 14px 18px; }
+  .lista-datos .icono { color: var(--ciruela-med); margin-top: 2px; }
+  .aviso-pasado { display: none; background: var(--blanco); border-left: 4px solid var(--arena-osc); border-radius: 10px; padding: 12px 16px; margin: 0 0 22px; color: var(--texto-suave); }
+  .evento.ya-paso .aviso-pasado { display: block; }
+
+  /* Versículo */
+  .versiculo { padding: 0 0 96px; background: var(--crema-2); }
+  .versiculo .caja { display: flex; align-items: center; gap: 28px; background: var(--ciruela-osc); color: var(--crema); border-radius: 24px; padding: 40px 44px; }
+  .versiculo .comillas { font-family: var(--serif); font-size: 5rem; line-height: .6; color: var(--arena); }
+  .versiculo blockquote { margin: 0; flex: 1; font-family: var(--serif); font-style: italic; font-size: clamp(1.25rem, 2.6vw, 1.75rem); line-height: 1.35; }
+  .versiculo .ref { font-weight: 700; color: var(--arena); white-space: nowrap; padding-left: 28px; border-left: 1px solid rgba(231, 211, 140, .4); }
+
+  /* Visítanos */
+  .visita-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .panel { background: var(--blanco); border: 1px solid var(--crema-2); border-radius: var(--radio); padding: 34px; }
+  .panel h3 { font-family: var(--serif); font-weight: 600; color: var(--ciruela); font-size: 1.45rem; margin: 0 0 18px; }
+  .panel address { font-style: normal; }
+  .fila { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 18px; }
+  .fila .icono { color: var(--ciruela-med); margin-top: 2px; }
+  .fila a { font-weight: 600; text-underline-offset: 3px; word-break: break-word; }
+  .nota { font-size: .85rem; color: var(--texto-suave); }
+  .panel .btn-oro { margin-top: 6px; }
+
+  /* Pie */
+  .pie { background: var(--ciruela-osc); color: rgba(248, 243, 234, .85); padding: 64px 0 28px; font-size: .92rem; }
+  .pie-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 36px; }
+  .pie .logo-pie { background: var(--blanco); border-radius: 14px; padding: 10px 14px; display: inline-block; margin-bottom: 16px; }
+  .pie .logo-pie img { height: 46px; width: auto; }
+  .pie h4 { color: var(--arena); text-transform: uppercase; letter-spacing: .14em; font-size: .75rem; margin: 0 0 14px; }
+  .pie ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .pie a { color: var(--crema); text-underline-offset: 3px; }
+  .pie dl { margin: 0; display: grid; gap: 10px; }
+  .pie dt { font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--taupe); }
+  .pie dd { margin: 0; color: var(--crema); }
+  .pie .legal { border-top: 1px solid rgba(248, 243, 234, .14); margin-top: 44px; padding-top: 22px; text-align: center; color: var(--taupe); font-size: .82rem; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero .contenedor, .evento-grid, .visita-grid { grid-template-columns: 1fr; }
+    .hero .contenedor { padding: 56px 0 88px; gap: 40px; }
+    .hero figure img { transform: none; width: min(300px, 100%); }
+    .pilares { grid-template-columns: 1fr; }
+    .franja .tarjeta { grid-template-columns: 1fr; }
+    .dato + .dato { border-left: 0; border-top: 1px solid var(--crema-2); }
+    .pie-grid { grid-template-columns: 1fr; }
+    .versiculo .caja { flex-direction: column; align-items: flex-start; padding: 32px 26px; gap: 14px; }
+    .versiculo .ref { border-left: 0; padding-left: 0; }
+  }
+  @media (max-width: 760px) {
+    .menu-btn { display: inline-flex; }
+    .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; background: var(--blanco); border-bottom: 1px solid var(--crema-2); box-shadow: var(--sombra); }
+    .nav.abierto { display: block; }
+    .nav ul { flex-direction: column; padding: 12px 16px 18px; }
+    .nav a { padding: 12px 14px; }
+    .marca img { height: 46px; }
+    section.bloque { padding: 72px 0; }
+  }
+</style>
+</head>
+<body>
+<a class="salto" href="#contenido">Saltar al contenido</a>
+
+<div class="anuncio" role="region" aria-label="Anuncio">
+  <div class="contenedor">
+    <span><strong>Quitando la piedra</strong> · Culto presencial · Sábado 17 de octubre de 2026, 10:00 a. m.</span>
+    <a href="#evento">Ver detalles</a>
+  </div>
+</div>
+
+<header class="cabecera">
+  <div class="contenedor">
+    <a class="marca" href="#inicio" aria-label="Iglesia Apalir, inicio">
+      <img src="assets/logo.png" alt="Iglesia Apalir — Aposento Alto de Liberación Restauradora" width="505" height="192">
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
+      <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      Menú
+    </button>
+    <nav class="nav" id="menu" aria-label="Principal">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#evento">Eventos</a></li>
+        <li><a href="#visitanos">Visítanos</a></li>
+        <li><a class="nav-cta" href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <section class="hero" id="inicio">
+    <div class="contenedor">
+      <div>
+        <span class="eyebrow">Bienvenido a casa</span>
+        <h1>Un encuentro con Dios.<br>Una vida <em>restaurada.</em></h1>
+        <p class="lead">Somos el Aposento Alto de Liberación Restauradora: una familia que se reúne para adorar, orar y crecer en la Palabra.</p>
+        <div class="acciones">
+          <a class="btn btn-oro" href="#visitanos">Planea tu visita
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-linea" href="#nosotros">Conoce nuestra iglesia</a>
+        </div>
+      </div>
+      <figure>
+        <img src="assets/volante.jpg" alt="Volante: Iglesia Apalir te invita al culto presencial Quitando la piedra, sábado 17 de octubre de 2026 a las 10:00 a. m., Calle Desiderio Arias #34, Bella Vista." width="1080" height="1350">
+        <figcaption>“Quitad la piedra.” — Juan 11:39</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="franja">
+    <div class="contenedor">
+      <div class="tarjeta">
+        <div class="dato">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+          <div>
+            <small><span class="js-etiqueta-culto">Próximo culto</span> <span class="pastilla js-estado">Próximo</span></small>
+            <b>Sábado 17 de octubre</b>
+            <span class="det">Culto presencial · 2026</span>
+          </div>
+        </div>
+        <div class="dato">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <div>
+            <small>Hora</small>
+            <b>10:00 a. m.</b>
+            <span class="det">Hora de República Dominicana</span>
+          </div>
+        </div>
+        <div class="dato">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          <div>
+            <small>Lugar</small>
+            <b>C/ Desiderio Arias #34</b>
+            <span class="det">Bella Vista · Local Agrupación Médica (IDSS)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="bloque" id="nosotros">
+    <div class="contenedor">
+      <div class="titulo">
+        <span class="eyebrow">Somos Apalir</span>
+        <h2>Aposento Alto de <em>Liberación Restauradora</em></h2>
+        <p>Nuestro nombre resume lo que creemos y vivimos cada vez que nos reunimos.</p>
+      </div>
+      <div class="pilares">
+        <article class="pilar">
+          <div class="circulo"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div>
+          <h3>Aposento Alto</h3>
+          <p>Un lugar de oración y comunión, como los discípulos que perseveraban unánimes esperando la promesa del Espíritu.</p>
+          <cite>Hechos 1:14</cite>
+        </article>
+        <article class="pilar">
+          <div class="circulo"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V7a5 5 0 0 1 9.9-1"/><rect x="4" y="11" width="16" height="10" rx="2"/></svg></div>
+          <h3>Liberación</h3>
+          <p>Creemos en el poder de Cristo para romper cadenas y dar verdadera libertad a quien se acerca a Él.</p>
+          <cite>Juan 8:36</cite>
+        </article>
+        <article class="pilar">
+          <div class="circulo"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+          <h3>Restauración</h3>
+          <p>Dios restaura vidas, familias y corazones. Aquí encontrarás una familia que te recibe y camina contigo.</p>
+          <cite>Salmo 23:3</cite>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque evento" id="evento">
+    <div class="contenedor evento-grid">
+      <figure class="evento-img">
+        <img src="assets/piedra.jpg" alt="Piedra blanca con una pequeña concha encima" width="850" height="325" loading="lazy">
+        <a href="assets/volante.jpg" target="_blank" rel="noopener">Ver volante completo<span class="sr"> (se abre en una pestaña nueva)</span></a>
+      </figure>
+      <div>
+        <span class="eyebrow">Te invita al culto presencial</span>
+        <h2>Quitando la piedra</h2>
+        <p class="sub">Ven a ver la gloria de Dios en tu vida.</p>
+        <p class="aviso-pasado" role="status">Este culto ya se realizó. Pronto anunciaremos la próxima fecha; escríbenos para enterarte.</p>
+        <ul class="lista-datos">
+          <li>
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+            <span><b>Sábado 17 de octubre de 2026</b><br>10:00 a. m.</span>
+          </li>
+          <li>
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            <span><b>Calle Desiderio Arias #34, Bella Vista</b><br>Local Agrupación Médica — Instituto Dominicano de Seguros Sociales (IDSS)</span>
+          </li>
+        </ul>
+        <a class="btn btn-oro" href="https://www.google.com/maps/search/?api=1&amp;query=Calle+Desiderio+Arias+34%2C+Bella+Vista%2C+Santo+Domingo" target="_blank" rel="noopener">Cómo llegar<span class="sr"> (abre Google Maps en una pestaña nueva)</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="versiculo" aria-label="Versículo">
+    <div class="contenedor">
+      <div class="caja">
+        <span class="comillas" aria-hidden="true">“</span>
+        <blockquote>¿No te he dicho que si crees, verás la gloria de Dios?</blockquote>
+        <span class="ref">Juan 11:40</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="visitanos">
+    <div class="contenedor">
+      <div class="titulo">
+        <span class="eyebrow">Planea tu visita</span>
+        <h2>Nos encantaría <em>recibirte</em></h2>
+        <p>Ven tal como eres. Si tienes preguntas antes de llegar, escríbenos o llámanos.</p>
+      </div>
+      <div class="visita-grid">
+        <div class="panel">
+          <h3>Dónde nos reunimos</h3>
+          <address>
+            <div class="fila">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+              <span>Calle Desiderio Arias #34, Bella Vista<br>Local Agrupación Médica — IDSS<br>Santo Domingo, República Dominicana</span>
+            </div>
+          </address>
+          <div class="fila">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>Culto presencial: sábado 17 de octubre de 2026, 10:00 a. m.<br><span class="nota">Consulta las próximas fechas por correo o teléfono.</span></span>
+          </div>
+          <a class="btn btn-oro" href="https://www.google.com/maps/search/?api=1&amp;query=Calle+Desiderio+Arias+34%2C+Bella+Vista%2C+Santo+Domingo" target="_blank" rel="noopener">Cómo llegar<span class="sr"> (abre Google Maps en una pestaña nueva)</span></a>
+        </div>
+        <div class="panel" id="contacto">
+          <h3>Contáctanos</h3>
+          <div class="fila">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            <a href="mailto:laguerrera007@hotmail.com">laguerrera007@hotmail.com</a>
+          </div>
+          <div class="fila">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            <a href="tel:+18095619128">809-561-9128</a>
+          </div>
+          <div class="fila">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+            <span>Dirección registrada:<br>Calle Primera n.º 15, El Holguín de Herrera</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <div class="pie-grid">
+      <div>
+        <span class="logo-pie"><img src="assets/logo.png" alt="Iglesia Apalir" width="505" height="192" loading="lazy"></span>
+        <p>Aposento Alto de Liberación Restauradora, Inc.<br>Una familia para encontrarte con Dios.</p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#evento">Eventos</a></li>
+          <li><a href="#visitanos">Visítanos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Datos institucionales</h4>
+        <dl>
+          <div><dt>RNC</dt><dd>430075442</dd></div>
+          <div><dt>Registro censo ASFL</dt><dd>004355-2010</dd></div>
+          <div><dt>Correo</dt><dd><a href="mailto:laguerrera007@hotmail.com">laguerrera007@hotmail.com</a></dd></div>
+        </dl>
+      </div>
+    </div>
+    <p class="legal">© <span class="js-anio">2026</span> Aposento Alto de Liberación Restauradora, Inc. · Santo Domingo, República Dominicana</p>
+  </div>
+</footer>
+
+<script>
+  // Menú móvil
+  const boton = document.querySelector('.menu-btn');
+  const menu = document.getElementById('menu');
+  boton.addEventListener('click', () => {
+    const abierto = menu.classList.toggle('abierto');
+    boton.setAttribute('aria-expanded', String(abierto));
+  });
+  menu.addEventListener('click', (e) => {
+    if (e.target.closest('a')) { menu.classList.remove('abierto'); boton.setAttribute('aria-expanded', 'false'); }
+  });
+
+  // Marca el culto como realizado cuando ya pasó (10:00 a. m. hora RD = UTC-4, ~3 h de duración)
+  const FIN_CULTO = new Date('2026-10-17T13:00:00-04:00');
+  if (Date.now() > FIN_CULTO.getTime()) {
+    document.getElementById('evento').classList.add('ya-paso');
+    document.querySelector('.js-etiqueta-culto').textContent = 'Último culto';
+    const estado = document.querySelector('.js-estado');
+    estado.textContent = 'Realizado';
+    estado.classList.add('pasado');
+  }
+  document.querySelector('.js-anio').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
