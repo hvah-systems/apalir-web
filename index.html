@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Iglesia Apalir | Aposento Alto de Liberación Restauradora</title>
-<meta name="description" content="Iglesia Apalir — Aposento Alto de Liberación Restauradora. Cultos presenciales en Bella Vista, Santo Domingo. Te esperamos.">
+<meta name="description" content="Iglesia Apalir — Aposento Alto de Liberación Restauradora y su Fundación Apalir. Cultos presenciales en Bella Vista, Santo Domingo, y obra social con envejecientes, familias y niños.">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -156,9 +156,54 @@
   .pie dd { margin: 0; color: var(--crema); }
   .pie .legal { border-top: 1px solid rgba(248, 243, 234, .14); margin-top: 44px; padding-top: 22px; text-align: center; color: var(--taupe); font-size: .82rem; }
 
+  /* Fotos con zoom suave al pasar el puntero */
+  .foto { margin: 0; overflow: hidden; border-radius: var(--radio); background: var(--crema-2); }
+  .foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+  .foto:hover img { transform: scale(1.03); }
+
+  /* Pastora */
+  .pastora-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 56px; align-items: center; }
+  .pastora-retrato { aspect-ratio: 3 / 4; box-shadow: var(--sombra); }
+  .pastora-texto .eyebrow { color: var(--ciruela-med); }
+  .pastora-texto h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(2.2rem, 4.4vw, 3.3rem); line-height: 1.08; margin: 14px 0 18px; color: var(--ciruela); }
+  .pastora-texto h2 em { color: var(--celeste); font-weight: 500; }
+  .pastora-texto p { color: var(--texto-suave); font-size: 1.08rem; max-width: 52ch; margin: 0 0 28px; }
+  .pastora-galeria { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 56px; }
+  .pastora-galeria .foto { aspect-ratio: 3 / 4; }
+  .pastora-texto .btn-oro { margin-top: 4px; }
+
+  /* Fundación */
+  .fundacion { background: #e9f6fb; }
+  .fundacion .titulo { max-width: 700px; }
+  .fundacion .titulo img { width: min(300px, 80%); margin: 0 auto 26px; }
+  .fundacion .titulo h2 em { color: #1d8fb8; }
+  .programas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .programa { background: var(--blanco); border-radius: var(--radio); overflow: hidden; box-shadow: 0 2px 0 #d3ebf3; border: 1px solid #d3ebf3; }
+  .programa .foto { border-radius: 0; aspect-ratio: 4 / 3; }
+  .programa div.txt { padding: 22px 24px 26px; }
+  .programa h3 { font-family: var(--serif); font-weight: 600; font-size: 1.25rem; margin: 0 0 6px; color: var(--ciruela); }
+  .programa p { margin: 0; color: var(--texto-suave); font-size: .97rem; }
+  .donar { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; margin-top: 56px; background: var(--ciruela-osc); color: var(--crema); border-radius: 24px; padding: 44px; }
+  .donar h3 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.15; margin: 12px 0 12px; }
+  .donar p { color: rgba(248, 243, 234, .85); margin: 0; }
+  .cuenta { background: rgba(255, 255, 255, .06); border: 1px solid rgba(231, 211, 140, .35); border-radius: var(--radio); padding: 26px 28px; }
+  .cuenta dl { margin: 0 0 20px; display: grid; gap: 12px; }
+  .cuenta dt { font-size: .74rem; text-transform: uppercase; letter-spacing: .12em; color: var(--taupe); }
+  .cuenta dd { margin: 2px 0 0; font-weight: 700; font-size: 1.1rem; color: var(--crema); }
+  .cuenta dd.num { font-family: var(--serif); font-size: 1.6rem; color: var(--arena); letter-spacing: .02em; }
+  .cuenta .acciones { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .cuenta button.btn { border: 0; cursor: pointer; font: 700 1rem var(--sans); }
+  .cuenta .copiado { font-size: .9rem; color: var(--arena); min-height: 1.4em; }
+  .cuenta a.correo { color: var(--crema); font-weight: 600; text-underline-offset: 3px; word-break: break-word; }
+
   /* Responsive */
   @media (max-width: 900px) {
-    .hero .contenedor, .evento-grid, .visita-grid { grid-template-columns: 1fr; }
+    .hero .contenedor, .evento-grid, .visita-grid, .pastora-grid, .donar { grid-template-columns: 1fr; }
+    .pastora-grid { gap: 32px; }
+    .pastora-retrato { max-width: 420px; }
+    .pastora-galeria { grid-template-columns: repeat(3, 1fr); }
+    .programas { grid-template-columns: repeat(2, 1fr); }
+    .donar { padding: 32px 24px; gap: 26px; }
     .hero .contenedor { padding: 56px 0 88px; gap: 40px; }
     .hero figure img { transform: none; width: min(300px, 100%); }
     .pilares { grid-template-columns: 1fr; }
@@ -176,6 +221,10 @@
     .nav a { padding: 12px 14px; }
     .marca img { height: 46px; }
     section.bloque { padding: 72px 0; }
+    .pastora-galeria { grid-template-columns: repeat(2, 1fr); }
+    .pastora-galeria .foto:last-child { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
+    .programas { grid-template-columns: 1fr; }
+    .cuenta .acciones .btn { width: 100%; justify-content: center; }
   }
 </style>
 </head>
@@ -202,9 +251,11 @@
       <ul>
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#pastora">Pastora</a></li>
         <li><a href="#evento">Eventos</a></li>
+        <li><a href="#fundacion">Fundación</a></li>
         <li><a href="#visitanos">Visítanos</a></li>
-        <li><a class="nav-cta" href="#contacto">Contacto</a></li>
+        <li><a class="nav-cta" href="#donar">Donar</a></li>
       </ul>
     </nav>
   </div>
@@ -225,7 +276,7 @@
         </div>
       </div>
       <figure>
-        <img src="assets/volante.jpg" alt="Volante: Iglesia Apalir te invita al culto presencial Quitando la piedra, sábado 17 de octubre de 2026 a las 10:00 a. m., Calle Desiderio Arias #34, Bella Vista." width="1080" height="1350">
+        <img src="assets/portada-iglesia.jpg" alt="Portada de la Iglesia Apalir: un hombre empuja una gran piedra al amanecer, con el lema Quitando la piedra." width="900" height="1268">
         <figcaption>“Quitad la piedra.” — Juan 11:39</figcaption>
       </figure>
     </div>
@@ -292,6 +343,31 @@
     </div>
   </section>
 
+  <section class="bloque" id="pastora" style="padding-top: 0">
+    <div class="contenedor">
+      <div class="pastora-grid">
+        <figure class="foto pastora-retrato">
+          <img src="assets/pastora-maribel.jpg" alt="La Pastora Maribel, sonriente, con blusa de encaje crema y falda dorada, frente a columnas y velas encendidas." width="900" height="1200" loading="lazy">
+        </figure>
+        <div class="pastora-texto">
+          <span class="eyebrow">Nuestra pastora</span>
+          <h2>Pastora <em>Maribel</em></h2>
+          <p>La Pastora Maribel guía a la familia Apalir en la oración y en la Palabra, y lleva la obra de la iglesia a la calle a través de la Fundación Apalir: alimentos, salud y alegría para quienes más lo necesitan.</p>
+          <a class="btn btn-oro" href="#fundacion">Conoce la Fundación
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="pastora-galeria">
+        <figure class="foto"><img src="assets/pastora/1.jpg" alt="La Pastora Maribel, sentada y de blanco, abrazada por una hermana en el evento Quitando la piedra." width="800" height="1067" loading="lazy"></figure>
+        <figure class="foto"><img src="assets/pastora/2.jpg" alt="La Pastora Maribel sonriente, vestida de celeste, junto a una hermana de la iglesia." width="800" height="1422" loading="lazy"></figure>
+        <figure class="foto"><img src="assets/pastora/3.jpg" alt="La Pastora Maribel de pie, vestida de blanco, junto a un balcón con flores rojas." width="747" height="1328" loading="lazy"></figure>
+        <figure class="foto"><img src="assets/pastora/4.jpg" alt="La Pastora Maribel con vestido turquesa junto a un arreglo de flores." width="640" height="640" loading="lazy"></figure>
+        <figure class="foto"><img src="assets/pastora/5.jpg" alt="La Pastora Maribel, de blanco, junto al cartel de la Fundación Apalir Manos dispuestas a servir." width="639" height="960" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
   <section class="bloque evento" id="evento">
     <div class="contenedor evento-grid">
       <figure class="evento-img">
@@ -324,6 +400,63 @@
         <span class="comillas" aria-hidden="true">“</span>
         <blockquote>¿No te he dicho que si crees, verás la gloria de Dios?</blockquote>
         <span class="ref">Juan 11:40</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque fundacion" id="fundacion">
+    <div class="contenedor">
+      <div class="titulo">
+        <img src="assets/fundacion-logo.png" alt="Fundación Apalir — Aposento Alto de Liberación Restauradora" width="937" height="408" loading="lazy">
+        <span class="eyebrow">La obra social de Apalir</span>
+        <h2>Manos dispuestas <em>a servir</em></h2>
+        <p>La Fundación Apalir lleva el amor de Cristo a la práctica: alimentos, salud, útiles escolares y alegría para envejecientes, familias y niños de nuestras comunidades.</p>
+      </div>
+      <div class="programas">
+        <article class="programa">
+          <figure class="foto"><img src="assets/fundacion/envejecientes.jpg" alt="Una voluntaria de la Fundación Apalir entrega una funda con alimentos a un señor mayor sentado." width="780" height="1040" loading="lazy"></figure>
+          <div class="txt"><h3>Entregas a envejecientes</h3><p>Visitamos a personas mayores y encamadas con alimentos, pañales y artículos de higiene.</p></div>
+        </article>
+        <article class="programa">
+          <figure class="foto"><img src="assets/fundacion/tarde-con-jesus.jpg" alt="Gran grupo de niños y familias reunidos bajo un techo en la actividad Una tarde con Jesús." width="900" height="675" loading="lazy"></figure>
+          <div class="txt"><h3>Una tarde con Jesús</h3><p>Una tarde de alabanza, comida y regalos para cientos de niños y sus familias.</p></div>
+        </article>
+        <article class="programa">
+          <figure class="foto"><img src="assets/fundacion/regreso-a-clases.jpg" alt="Niños con sus mochilas nuevas frente al letrero De Regreso a Clases." width="900" height="1200" loading="lazy"></figure>
+          <div class="txt"><h3>De regreso a clases</h3><p>Mochilas y útiles escolares para que ningún niño empiece el año sin lo necesario.</p></div>
+        </article>
+        <article class="programa">
+          <figure class="foto"><img src="assets/fundacion/operativo-medico.jpg" alt="Voluntarias organizan medicamentos en una mesa durante un operativo médico." width="900" height="1200" loading="lazy"></figure>
+          <div class="txt"><h3>Operativos médicos</h3><p>Consultas, toma de presión y medicamentos gratuitos en las comunidades.</p></div>
+        </article>
+        <article class="programa">
+          <figure class="foto"><img src="assets/fundacion/comida.jpg" alt="Dos voluntarias de la Fundación Apalir sirven arroz, carne y pan en bandejas." width="900" height="900" loading="lazy"></figure>
+          <div class="txt"><h3>Comidas compartidas</h3><p>Cocinamos y servimos platos calientes en cada actividad de la fundación.</p></div>
+        </article>
+        <article class="programa">
+          <figure class="foto"><img src="assets/fundacion/juguetes.jpg" alt="Mesa llena de juguetes, pelotas y peluches listos para regalar a los niños." width="900" height="1200" loading="lazy"></figure>
+          <div class="txt"><h3>Juguetes para los niños</h3><p>Regalos que llevan una sonrisa a niños de familias de escasos recursos.</p></div>
+        </article>
+      </div>
+
+      <div class="donar" id="donar">
+        <div>
+          <span class="eyebrow">Apoya la obra</span>
+          <h3>Tu donación se convierte en comida, medicinas y útiles</h3>
+          <p>Cada aporte a la Fundación Apalir llega a un envejeciente, una familia o un niño. Si deseas donar alimentos, ropa o juguetes, escríbenos y coordinamos la entrega.</p>
+        </div>
+        <div class="cuenta">
+          <dl>
+            <div><dt>Banco</dt><dd>Banco BHD (República Dominicana)</dd></div>
+            <div><dt>Cuenta n.º</dt><dd class="num js-cuenta">0989914-002-5</dd></div>
+            <div><dt>Código SWIFT</dt><dd>BCBHDOSDXXX</dd></div>
+            <div><dt>Correo de la fundación</dt><dd><a class="correo" href="mailto:fundacionapalir@gmail.com">fundacionapalir@gmail.com</a></dd></div>
+          </dl>
+          <div class="acciones">
+            <button class="btn btn-oro js-copiar" type="button">Copiar cuenta</button>
+            <span class="copiado" role="status" aria-live="polite"></span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -382,8 +515,10 @@
         <ul>
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#pastora">Pastora Maribel</a></li>
           <li><a href="#evento">Eventos</a></li>
-          <li><a href="#visitanos">Visítanos</a></li>
+          <li><a href="#fundacion">Fundación Apalir</a></li>
+          <li><a href="#donar">Donar</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </div>
@@ -393,6 +528,7 @@
           <div><dt>RNC</dt><dd>430075442</dd></div>
           <div><dt>Registro censo ASFL</dt><dd>004355-2010</dd></div>
           <div><dt>Correo</dt><dd><a href="mailto:laguerrera007@hotmail.com">laguerrera007@hotmail.com</a></dd></div>
+          <div><dt>Donaciones · Banco BHD</dt><dd>Cuenta 0989914-002-5</dd></div>
         </dl>
       </div>
     </div>
@@ -422,6 +558,19 @@
     estado.classList.add('pasado');
   }
   document.querySelector('.js-anio').textContent = new Date().getFullYear();
+
+  // Copiar el número de cuenta de donaciones
+  const copiar = document.querySelector('.js-copiar');
+  const avisoCopia = document.querySelector('.copiado');
+  copiar.addEventListener('click', async () => {
+    const numero = document.querySelector('.js-cuenta').textContent.trim();
+    try {
+      await navigator.clipboard.writeText(numero);
+      avisoCopia.textContent = 'Número copiado: ' + numero;
+    } catch (error) {
+      avisoCopia.textContent = 'No se pudo copiar. Anota el número: ' + numero;
+    }
+  });
 </script>
 </body>
 </html>
