@@ -84,8 +84,10 @@ systemctl reload nginx
 
 DOMINIOS_CERT=""
 for n in $NOMBRES_IGLESIA $NOMBRES_FUND; do DOMINIOS_CERT="$DOMINIOS_CERT -d $n"; done
+# "sin-correo": no se registra ningún correo en Let's Encrypt (no llegan avisos de vencimiento).
+if [ "$CORREO" = "sin-correo" ]; then CUENTA="--register-unsafely-without-email"; else CUENTA="-m $CORREO"; fi
 # shellcheck disable=SC2086
-certbot --nginx --non-interactive --agree-tos --redirect -m "$CORREO" $DOMINIOS_CERT
+certbot --nginx --non-interactive --agree-tos --redirect $CUENTA $DOMINIOS_CERT
 
 systemctl reload nginx
 echo "LISTO: https://$DOMINIO"
