@@ -625,3 +625,13 @@ html.con-intro .intro { animation-duration: 0s; animation-delay: 18s; }
 }
 /* El collage solo tiene fotos superpuestas: necesita un ancho propio o se encoge a cero en el teléfono */
 @media (max-width: 760px) { .collage { width: 100%; max-width: 340px; justify-self: center; } }
+
+/* Franja superior en el teléfono (o con movimiento reducido): una sola línea centrada que cabe completa */
+.anuncio-corto { display: none; }
+@media (max-width: 760px), (prefers-reduced-motion: reduce) {
+  .anuncio .contenedor.ticker { justify-content: center; padding: 10px 0; }
+  .anuncio .ticker-ventana, .anuncio .ticker > a:not(.anuncio-corto) { display: none; }
+  .anuncio .ticker > a.anuncio-corto { display: block; color: var(--crema); font-weight: 500; text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; max-width: 100%; }
+  .anuncio-corto strong { color: var(--arena); }
+}
+@media (max-width: 760px) { .anuncio .ticker > a.anuncio-corto { font-size: clamp(.68rem, 3.15vw, .86rem); } }
