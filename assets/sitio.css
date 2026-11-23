@@ -661,3 +661,20 @@ html.con-intro .intro::before { content: ""; position: absolute; inset: -40px; b
 .intro-textos { bottom: auto; top: 15vh; }
 .intro-nombre { top: 0; bottom: auto; }
 .intro-sombra { background: radial-gradient(ellipse at 50% 55%, transparent 40%, rgba(3, 16, 28, .5) 100%), linear-gradient(180deg, rgba(3, 16, 28, .55) 0%, transparent 38%); }
+
+/* ============ Teléfono: la portada cabe en la primera pantalla con su botón principal ============
+   svh = alto visible con las barras de Safari a la vista; se descuenta la cabecera (y la franja de avisos si la hay). */
+@media (max-width: 760px) {
+  .hero { --encima: 74px; }
+  .anuncio ~ main .hero { --encima: 115px; }
+  .hero > .contenedor { padding-top: 0; gap: 28px; }
+  .hero > .contenedor > div:first-child { min-height: calc(100vh - var(--encima)); min-height: calc(100svh - var(--encima)); display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 22px; }
+  .hero::before, .hero::after { height: calc(100vh - var(--encima) + 2px); height: calc(100svh - var(--encima) + 2px); }
+  :root, [data-tema="iglesia"] { --hero-fundido: linear-gradient(180deg, rgba(11, 47, 72, .05) 0%, rgba(11, 47, 72, .2) 28%, rgba(11, 47, 72, .82) 52%, #0b2f48 70%); }
+  [data-tema="fundacion"] { --hero-fundido: linear-gradient(180deg, rgba(68, 40, 47, .05) 0%, rgba(68, 40, 47, .2) 28%, rgba(68, 40, 47, .85) 52%, #44282f 70%); }
+  .hero .eyebrow { margin: 0; }
+  .hero h1 { font-size: clamp(1.95rem, 8.4vw, 2.5rem); margin: 10px 0 12px; }
+  .hero p.lead { font-size: .98rem; line-height: 1.5; margin: 0 0 18px; }
+  .hero .acciones { gap: 10px; }
+  .hero .acciones .btn { padding: 13px 22px; }
+}
