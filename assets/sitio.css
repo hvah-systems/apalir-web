@@ -694,3 +694,23 @@ html.con-intro .intro::before { content: ""; position: absolute; inset: -40px; b
   .anuncio ~ main .hero .eyebrow { display: none; }
   .anuncio ~ main .hero h1 { font-size: 1.65rem; margin-top: 0; }
 }
+
+/* ============ Fundación: actividades en fotos y videos ============ */
+.actividades-lista { display: grid; gap: 28px; }
+.actividad { background: var(--blanco); border: 1px solid var(--crema-2); border-top: 6px solid var(--mano); border-radius: var(--radio); padding: 28px; display: grid; grid-template-columns: 1fr; gap: 20px; }
+.actividad-cab h3 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.4rem, 2.6vw, 1.85rem); color: var(--ciruela); margin: 0 0 8px; }
+.actividad-cab h3::before { content: ""; display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--mano); margin-right: 12px; vertical-align: middle; }
+.actividad-cab p { margin: 0; color: var(--texto-suave); max-width: 70ch; }
+.actividad .mosaico { columns: 4 200px; }
+.actividad-video { margin: 0; max-width: 360px; border-radius: 16px; overflow: hidden; background: #000; box-shadow: var(--sombra); }
+.actividad-video video { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; background: #000; }
+@media (min-width: 900px) {
+  .actividad:has(.actividad-video):has(.mosaico) { grid-template-columns: 300px 1fr; }
+  .actividad:has(.actividad-video):has(.mosaico) .actividad-cab { grid-column: 1 / -1; }
+  .actividad:has(.actividad-video):has(.mosaico) .mosaico { columns: 3 180px; }
+}
+@media (max-width: 760px) {
+  .actividad { padding: 20px; }
+  .actividad .mosaico { columns: 2 140px; }
+  .actividad-video { max-width: none; }
+}
