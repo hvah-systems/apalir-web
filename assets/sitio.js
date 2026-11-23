@@ -140,6 +140,17 @@
     });
   });
 
+  // Franja de avisos: tocarla (o Enter/espacio) detiene o reanuda el movimiento
+  const ventanaAvisos = document.querySelector('.ticker-ventana');
+  if (ventanaAvisos) {
+    const franja = ventanaAvisos.closest('.anuncio');
+    const alternar = () => franja.classList.toggle('pausada');
+    ventanaAvisos.addEventListener('click', alternar);
+    ventanaAvisos.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); alternar(); }
+    });
+  }
+
   // Copiar el número de cuenta de donaciones
   const copiar = document.querySelector('.js-copiar');
   if (copiar) {
