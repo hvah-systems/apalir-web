@@ -20,13 +20,15 @@
     });
   }
 
-  // Entrada con la paloma: aparece cada vez que se abre el inicio.
-  // El reloj de 10 s corre desde que la paloma empieza a moverse (no desde que carga la página).
-  const DURACION_INTRO = 10000;   // la paloma en cámara lenta: 10 s
-  const DESTELLO_INTRO = 8700;    // el destello de luz empieza antes del final y abre la página
-  const SALIDA_INTRO = 900;
-  const ESPERA_VIDEO = 1500;      // computadora: si el video no arranca, se usa la versión animada
-  const ESPERA_MEDIO = 6000;      // si nada logra cargar en este tiempo, se abre la página
+  // Entrada con la paloma (3 s): aparece cada vez que se abre el inicio.
+  // La paloma se dibuja cuadro por cuadro en un canvas desde una hoja de 45 cuadros:
+  // así se mueve aunque el teléfono tenga «Reducir movimiento» o ahorro de batería
+  // (esos ajustes detienen videos e imágenes animadas, pero no un canvas).
+  const DURACION_INTRO = 3000;
+  const DESTELLO_INTRO = 2300;    // el destello empieza antes del final y abre la página
+  const SALIDA_INTRO = 700;
+  const ESPERA_MEDIO = 5000;      // si los cuadros no cargan en este tiempo, se abre la página
+  const CUADROS = { total: 45, columnas: 9, ancho: 384, alto: 516, porSegundo: 15 };
   const raiz = document.documentElement;
   const intro = document.querySelector('.intro');
   const introLista = new Promise((listo) => {
@@ -43,36 +45,40 @@
       setTimeout(() => raiz.classList.remove('con-intro'), SALIDA_INTRO);
     };
     const encender = () => intro.classList.add('intro-luz');
-    const arrancar = () => {
-      if (corriendo || terminada) return;
-      corriendo = true;
-      intro.classList.add('corriendo');
-      relojes = [setTimeout(encender, DESTELLO_INTRO), setTimeout(terminar, DURACION_INTRO)];
-    };
     const salirPronto = () => {
       if (terminada) return;
       relojes.forEach(clearTimeout);
       encender();
       relojes = [setTimeout(terminar, DURACION_INTRO - DESTELLO_INTRO)];
     };
-    const anim = intro.querySelector('.intro-anim');
-    const usarAnimacion = () => {
-      if (corriendo || terminada || !anim) return;
-      intro.classList.add('con-animacion');
-      intro.querySelectorAll('video').forEach((v) => v.pause());
-      if (!anim.getAttribute('src')) anim.src = anim.dataset.src;
-      if (anim.complete && anim.naturalWidth) { arrancar(); return; }
-      anim.addEventListener('load', arrancar, { once: true });
-      anim.addEventListener('error', salirPronto, { once: true });
+    const lienzo = intro.querySelector('.intro-lienzo');
+    const ctx = lienzo && lienzo.getContext('2d');
+    const hoja = new Image();
+    const dibujar = (i) => {
+      const c = Math.min(i, CUADROS.total - 1);
+      ctx.drawImage(hoja, (c % CUADROS.columnas) * CUADROS.ancho, Math.floor(c / CUADROS.columnas) * CUADROS.alto,
+        CUADROS.ancho, CUADROS.alto, 0, 0, CUADROS.ancho, CUADROS.alto);
     };
-    const video = intro.querySelector('.intro-video');
-    if (intro.classList.contains('con-animacion')) {
-      usarAnimacion();                                   // teléfono: decidido al cargar la página
-    } else if (video) {
-      if (!video.paused && video.currentTime > 0) arrancar();
-      video.addEventListener('playing', arrancar, { once: true });
-      video.addEventListener('error', usarAnimacion, { once: true });
-      setTimeout(() => { if (!corriendo) usarAnimacion(); }, ESPERA_VIDEO);
+    const arrancar = () => {
+      if (corriendo || terminada) return;
+      corriendo = true;
+      intro.classList.add('corriendo');
+      dibujar(0);
+      const inicio = performance.now();
+      let ultimo = 0;
+      // setInterval (no requestAnimationFrame) para que siga aun si el navegador frena los cuadros de animación
+      const animar = setInterval(() => {
+        const i = Math.floor((performance.now() - inicio) / (1000 / CUADROS.porSegundo));
+        if (i !== ultimo) { ultimo = i; dibujar(i); }
+        if (i >= CUADROS.total - 1 || terminada) clearInterval(animar);
+      }, 1000 / CUADROS.porSegundo / 2);
+      relojes = [setTimeout(encender, DESTELLO_INTRO), setTimeout(terminar, DURACION_INTRO)];
+    };
+    if (ctx) {
+      hoja.addEventListener('load', arrancar, { once: true });
+      hoja.addEventListener('error', salirPronto, { once: true });
+      hoja.src = 'assets/intro/paloma-cuadros.jpg';
+      if (hoja.complete && hoja.naturalWidth) arrancar();
     }
     setTimeout(() => { if (!corriendo) salirPronto(); }, ESPERA_MEDIO);
     const saltar = intro.querySelector('.intro-saltar');

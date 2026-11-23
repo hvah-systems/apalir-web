@@ -642,3 +642,22 @@ html.con-intro .intro { animation-duration: 0s; animation-delay: 18s; }
   .ticker-pista { animation: desliza 38s linear infinite; flex-wrap: nowrap; width: max-content; }
   .ticker-pista span[aria-hidden] { display: block; }
 }
+
+/* ============ Entrada de 3 s: paloma dibujada en canvas ============ */
+html.con-intro .intro { background: #0b2f6b url("intro/paloma-poster.jpg") center / cover no-repeat; animation-delay: 8s; }
+html.con-intro .intro::before { content: ""; position: absolute; inset: -40px; background: url("intro/paloma-poster.jpg") center / cover no-repeat; filter: blur(34px) saturate(1.2) brightness(.8); }
+.intro-lienzo { position: absolute; left: 50%; top: 0; height: 100%; width: auto; transform: translateX(-50%); -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); }
+.intro.corriendo .intro-lienzo { animation: acercar 3s ease-out forwards; }
+.intro.corriendo .intro-nombre { animation: nombre 1.3s cubic-bezier(0.22, 1, 0.36, 1) .9s forwards; }
+.intro.corriendo .intro-progreso span { animation: progreso 3s linear forwards; }
+.intro.intro-luz .intro-destello { animation: destello .8s cubic-bezier(.3, 0, .2, 1) forwards; }
+.intro.intro-fin { transition-duration: .7s; }
+@media (max-width: 760px) {
+  html.con-intro .intro::before { display: none; }
+  .intro-lienzo { -webkit-mask-image: none; mask-image: none; min-width: 100%; }
+  .intro.corriendo .intro-lienzo { animation: acercar 3s ease-out forwards; }
+}
+/* El título va arriba, en el cielo: la paloma baja hacia las manos en la parte inferior */
+.intro-textos { bottom: auto; top: 15vh; }
+.intro-nombre { top: 0; bottom: auto; }
+.intro-sombra { background: radial-gradient(ellipse at 50% 55%, transparent 40%, rgba(3, 16, 28, .5) 100%), linear-gradient(180deg, rgba(3, 16, 28, .55) 0%, transparent 38%); }

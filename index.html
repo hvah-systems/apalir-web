@@ -10,43 +10,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/sitio.css?v=18">
+<link rel="stylesheet" href="assets/sitio.css?v=20">
 <script>document.documentElement.classList.replace('sin-js', 'js'); document.documentElement.classList.add('con-intro');</script>
 </head>
 <body>
 <a class="salto" href="#contenido">Saltar al contenido</a>
 
 <div class="intro">
-  <video class="intro-fondo" muted playsinline preload="none" poster="assets/intro/paloma-poster.jpg" aria-hidden="true"></video>
-  <video class="intro-video" muted playsinline preload="none" poster="assets/intro/paloma-poster.jpg" aria-hidden="true"></video>
-  <img class="intro-anim" data-src="assets/intro/paloma.webp" alt="" width="512" height="688" aria-hidden="true">
+  <canvas class="intro-lienzo" width="384" height="516" aria-hidden="true"></canvas>
   <div class="intro-sombra" aria-hidden="true"></div>
   <div class="intro-textos" aria-hidden="true">
-    <p class="intro-verso">“…y vio al Espíritu de Dios que descendía como paloma.”<cite>Mateo 3:16</cite></p>
     <div class="intro-nombre"><small>Aposento Alto de Liberación Restauradora</small><strong>Iglesia <em>Apalir</em></strong></div>
   </div>
   <div class="intro-destello" aria-hidden="true"></div>
   <div class="intro-progreso" aria-hidden="true"><span></span></div>
   <button class="intro-saltar" type="button">Saltar</button>
 </div>
-<script>(function () {
-  // Teléfono: animación en imagen (se reproduce siempre, aun con ahorro de batería).
-  // Computadora: video en cámara lenta (5,4 s → 9 s); si no arranca, sitio.js cambia a la animación.
-  var intro = document.querySelector('.intro');
-  if (!intro || !document.documentElement.classList.contains('con-intro')) return;
-  if (matchMedia('(max-width: 760px)').matches) {
-    var img = intro.querySelector('.intro-anim');
-    intro.classList.add('con-animacion');
-    img.src = img.dataset.src;
-    return;
-  }
-  intro.querySelectorAll('video').forEach(function (v) {
-    v.defaultPlaybackRate = 0.6;
-    v.addEventListener('loadedmetadata', function () { v.playbackRate = 0.6; });
-    v.src = 'assets/intro/paloma.mp4';
-    var p = v.play(); if (p && p.catch) p.catch(function () {});
-  });
-})();</script>
+<link rel="preload" as="image" href="assets/intro/paloma-cuadros.jpg">
 
 <div class="anuncio" role="region" aria-label="Anuncio">
   <div class="contenedor ticker">
@@ -344,6 +324,6 @@
   </div>
 </footer>
 
-<script src="assets/sitio.js?v=18" defer></script>
+<script src="assets/sitio.js?v=20" defer></script>
 </body>
 </html>
