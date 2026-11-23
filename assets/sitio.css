@@ -623,3 +623,5 @@ html.con-intro .intro { animation-duration: 0s; animation-delay: 18s; }
   .intro.intro-luz .intro-destello { animation: none; }
   .intro.intro-fin { transform: none; filter: none; }
 }
+/* El collage solo tiene fotos superpuestas: necesita un ancho propio o se encoge a cero en el teléfono */
+@media (max-width: 760px) { .collage { width: 100%; max-width: 340px; justify-self: center; } }
