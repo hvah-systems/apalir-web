@@ -20,10 +20,34 @@
     });
   }
 
+  // Entrada con la paloma: una vez por visita; la portada aparece cuando la paloma se va
+  const DURACION_INTRO = 2800;
+  const SALIDA_INTRO = 600;
+  const raiz = document.documentElement;
+  const intro = document.querySelector('.intro');
+  const introLista = new Promise((listo) => {
+    if (!intro || !raiz.classList.contains('con-intro')) { listo(); return; }
+    let terminada = false;
+    const terminar = () => {
+      if (terminada) return;
+      terminada = true;
+      try { sessionStorage.setItem('apalir-intro', '1'); } catch (error) { /* sin almacenamiento: solo se repite la entrada */ }
+      intro.classList.add('intro-fin');
+      listo();
+      setTimeout(() => raiz.classList.remove('con-intro'), SALIDA_INTRO);
+    };
+    setTimeout(terminar, DURACION_INTRO);
+    const saltar = intro.querySelector('.intro-saltar');
+    if (saltar) { saltar.addEventListener('click', terminar); saltar.focus({ preventScroll: true }); }
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') terminar(); }, { once: true });
+  });
+
   // Entrada de la portada (Texts reveal de transitions.dev)
-  document.querySelectorAll('.t-stagger').forEach((bloque) => {
-    void bloque.offsetHeight;
-    requestAnimationFrame(() => bloque.classList.add('is-shown'));
+  introLista.then(() => {
+    document.querySelectorAll('.t-stagger').forEach((bloque) => {
+      void bloque.offsetHeight;
+      requestAnimationFrame(() => bloque.classList.add('is-shown'));
+    });
   });
 
   // Tarjetas que aparecen una sola vez al entrar en pantalla
