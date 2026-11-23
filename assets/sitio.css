@@ -678,3 +678,19 @@ html.con-intro .intro::before { content: ""; position: absolute; inset: -40px; b
   .hero .acciones { gap: 10px; }
   .hero .acciones .btn { padding: 13px 22px; }
 }
+/* Portada de la Iglesia en el teléfono: la foto sube (se corta el aire acondicionado y empieza en las plantas),
+   centrada hacia la Pastora Maribel; el texto se compacta para que ella se vea sobre él. */
+@media (max-width: 760px) {
+  .anuncio ~ main .hero::before { background-size: auto 112%; background-position: 30% 100%; }
+  .anuncio ~ main .hero::after { background: linear-gradient(180deg, rgba(11, 47, 72, .05) 0%, rgba(11, 47, 72, .12) 42%, rgba(11, 47, 72, .8) 58%, #0b2f48 72%); }
+  .anuncio ~ main .hero h1 { font-size: clamp(1.75rem, 7.4vw, 2.2rem); margin: 8px 0 10px; }
+  .anuncio ~ main .hero .lead-largo { display: none; }
+  .anuncio ~ main .hero .acciones .btn-linea { display: none; }
+}
+.lead-corto { display: none; }
+@media (max-width: 760px) { .anuncio ~ main .hero .lead-corto { display: inline; } }
+/* Teléfonos de pantalla baja (iPhone SE): se omite la línea «Bienvenido a casa» para no tapar a la Pastora */
+@media (max-width: 760px) and (max-height: 620px) {
+  .anuncio ~ main .hero .eyebrow { display: none; }
+  .anuncio ~ main .hero h1 { font-size: 1.65rem; margin-top: 0; }
+}
