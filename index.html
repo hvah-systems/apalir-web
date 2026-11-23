@@ -10,11 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/sitio.css?v=14">
-<script>(function () {
-  var d = document.documentElement; d.classList.replace('sin-js', 'js');
-  try { if (!sessionStorage.getItem('apalir-intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('con-intro'); } catch (e) {}
-})();</script>
+<link rel="stylesheet" href="assets/sitio.css?v=15">
+<script>document.documentElement.classList.replace('sin-js', 'js'); document.documentElement.classList.add('con-intro');</script>
 </head>
 <body>
 <a class="salto" href="#contenido">Saltar al contenido</a>
@@ -22,6 +19,7 @@
 <div class="intro">
   <video class="intro-fondo" muted playsinline preload="none" poster="assets/intro/paloma-poster.jpg" aria-hidden="true"></video>
   <video class="intro-video" muted playsinline preload="none" poster="assets/intro/paloma-poster.jpg" aria-hidden="true"></video>
+  <img class="intro-anim" data-src="assets/intro/paloma.webp" alt="" width="512" height="688" aria-hidden="true">
   <div class="intro-sombra" aria-hidden="true"></div>
   <div class="intro-textos" aria-hidden="true">
     <p class="intro-verso">“…y vio al Espíritu de Dios que descendía como paloma.”<cite>Mateo 3:16</cite></p>
@@ -32,9 +30,17 @@
   <button class="intro-saltar" type="button">Saltar</button>
 </div>
 <script>(function () {
-  // El video solo se descarga si la entrada se va a mostrar; corre en cámara lenta (5,4 s → 9 s)
-  if (!document.documentElement.classList.contains('con-intro')) return;
-  document.querySelectorAll('.intro video').forEach(function (v) {
+  // Teléfono: animación en imagen (se reproduce siempre, aun con ahorro de batería).
+  // Computadora: video en cámara lenta (5,4 s → 9 s); si no arranca, sitio.js cambia a la animación.
+  var intro = document.querySelector('.intro');
+  if (!intro || !document.documentElement.classList.contains('con-intro')) return;
+  if (matchMedia('(max-width: 760px)').matches) {
+    var img = intro.querySelector('.intro-anim');
+    intro.classList.add('con-animacion');
+    img.src = img.dataset.src;
+    return;
+  }
+  intro.querySelectorAll('video').forEach(function (v) {
     v.defaultPlaybackRate = 0.6;
     v.addEventListener('loadedmetadata', function () { v.playbackRate = 0.6; });
     v.src = 'assets/intro/paloma.mp4';
@@ -51,7 +57,7 @@
 
 <header class="cabecera">
   <div class="contenedor">
-    <a class="marca" href="#inicio" aria-label="Iglesia Apalir, inicio">
+    <a class="marca" href="index.html" aria-label="Iglesia Apalir, inicio">
       <img src="assets/logo.png" alt="Iglesia Apalir — Aposento Alto de Liberación Restauradora" width="505" height="192">
     </a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
@@ -60,7 +66,7 @@
     </button>
     <nav class="nav" id="menu" aria-label="Principal">
       <ul>
-        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="index.html">Inicio</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#pastora">Pastora</a></li>
         <li><a href="viaje-israel.html">Viaje a Israel</a></li>
@@ -316,7 +322,7 @@
       <div>
         <h4>Navegación</h4>
         <ul>
-          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="index.html">Inicio</a></li>
           <li><a href="#cultos">Cultos por Zoom</a></li>
           <li><a href="#pastora">Pastora Maribel</a></li>
           <li><a href="viaje-israel.html">Viaje a Israel</a></li>
@@ -338,6 +344,6 @@
   </div>
 </footer>
 
-<script src="assets/sitio.js?v=14" defer></script>
+<script src="assets/sitio.js?v=15" defer></script>
 </body>
 </html>

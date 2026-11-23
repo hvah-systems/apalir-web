@@ -20,38 +20,61 @@
     });
   }
 
-  // Entrada con la paloma: una vez por visita; la portada aparece cuando la paloma se va
+  // Entrada con la paloma: aparece cada vez que se abre el inicio.
+  // El reloj de 10 s corre desde que la paloma empieza a moverse (no desde que carga la página).
   const DURACION_INTRO = 10000;   // la paloma en cámara lenta: 10 s
   const DESTELLO_INTRO = 8700;    // el destello de luz empieza antes del final y abre la página
   const SALIDA_INTRO = 900;
-  const ESPERA_VIDEO = 2500;      // si el video no arranca en este tiempo (ahorro de batería, error), se sale antes
+  const ESPERA_VIDEO = 1500;      // computadora: si el video no arranca, se usa la versión animada
+  const ESPERA_MEDIO = 6000;      // si nada logra cargar en este tiempo, se abre la página
   const raiz = document.documentElement;
   const intro = document.querySelector('.intro');
   const introLista = new Promise((listo) => {
     if (!intro || !raiz.classList.contains('con-intro')) { listo(); return; }
     let terminada = false;
+    let corriendo = false;
+    let relojes = [];
     const terminar = () => {
       if (terminada) return;
       terminada = true;
-      try { sessionStorage.setItem('apalir-intro', '1'); } catch (error) { /* sin almacenamiento: solo se repite la entrada */ }
+      relojes.forEach(clearTimeout);
       intro.classList.add('intro-fin');
       listo();
       setTimeout(() => raiz.classList.remove('con-intro'), SALIDA_INTRO);
     };
     const encender = () => intro.classList.add('intro-luz');
-    const relojes = [setTimeout(encender, DESTELLO_INTRO), setTimeout(terminar, DURACION_INTRO)];
+    const arrancar = () => {
+      if (corriendo || terminada) return;
+      corriendo = true;
+      intro.classList.add('corriendo');
+      relojes = [setTimeout(encender, DESTELLO_INTRO), setTimeout(terminar, DURACION_INTRO)];
+    };
     const salirPronto = () => {
+      if (terminada) return;
       relojes.forEach(clearTimeout);
       encender();
-      setTimeout(terminar, DURACION_INTRO - DESTELLO_INTRO);
+      relojes = [setTimeout(terminar, DURACION_INTRO - DESTELLO_INTRO)];
+    };
+    const anim = intro.querySelector('.intro-anim');
+    const usarAnimacion = () => {
+      if (corriendo || terminada || !anim) return;
+      intro.classList.add('con-animacion');
+      intro.querySelectorAll('video').forEach((v) => v.pause());
+      if (!anim.getAttribute('src')) anim.src = anim.dataset.src;
+      if (anim.complete && anim.naturalWidth) { arrancar(); return; }
+      anim.addEventListener('load', arrancar, { once: true });
+      anim.addEventListener('error', salirPronto, { once: true });
     };
     const video = intro.querySelector('.intro-video');
-    if (video) {
-      let empezo = false;
-      video.addEventListener('playing', () => { empezo = true; }, { once: true });
-      video.addEventListener('error', salirPronto, { once: true });
-      setTimeout(() => { if (!empezo && !terminada) salirPronto(); }, ESPERA_VIDEO);
+    if (intro.classList.contains('con-animacion')) {
+      usarAnimacion();                                   // teléfono: decidido al cargar la página
+    } else if (video) {
+      if (!video.paused && video.currentTime > 0) arrancar();
+      video.addEventListener('playing', arrancar, { once: true });
+      video.addEventListener('error', usarAnimacion, { once: true });
+      setTimeout(() => { if (!corriendo) usarAnimacion(); }, ESPERA_VIDEO);
     }
+    setTimeout(() => { if (!corriendo) salirPronto(); }, ESPERA_MEDIO);
     const saltar = intro.querySelector('.intro-saltar');
     if (saltar) { saltar.addEventListener('click', terminar); saltar.focus({ preventScroll: true }); }
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') terminar(); }, { once: true });
