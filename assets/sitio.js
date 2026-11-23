@@ -21,8 +21,10 @@
   }
 
   // Entrada con la paloma: una vez por visita; la portada aparece cuando la paloma se va
-  const DURACION_INTRO = 2800;
-  const SALIDA_INTRO = 600;
+  const DURACION_INTRO = 10000;   // la paloma en cámara lenta: 10 s
+  const DESTELLO_INTRO = 8700;    // el destello de luz empieza antes del final y abre la página
+  const SALIDA_INTRO = 900;
+  const ESPERA_VIDEO = 2500;      // si el video no arranca en este tiempo (ahorro de batería, error), se sale antes
   const raiz = document.documentElement;
   const intro = document.querySelector('.intro');
   const introLista = new Promise((listo) => {
@@ -36,7 +38,20 @@
       listo();
       setTimeout(() => raiz.classList.remove('con-intro'), SALIDA_INTRO);
     };
-    setTimeout(terminar, DURACION_INTRO);
+    const encender = () => intro.classList.add('intro-luz');
+    const relojes = [setTimeout(encender, DESTELLO_INTRO), setTimeout(terminar, DURACION_INTRO)];
+    const salirPronto = () => {
+      relojes.forEach(clearTimeout);
+      encender();
+      setTimeout(terminar, DURACION_INTRO - DESTELLO_INTRO);
+    };
+    const video = intro.querySelector('.intro-video');
+    if (video) {
+      let empezo = false;
+      video.addEventListener('playing', () => { empezo = true; }, { once: true });
+      video.addEventListener('error', salirPronto, { once: true });
+      setTimeout(() => { if (!empezo && !terminada) salirPronto(); }, ESPERA_VIDEO);
+    }
     const saltar = intro.querySelector('.intro-saltar');
     if (saltar) { saltar.addEventListener('click', terminar); saltar.focus({ preventScroll: true }); }
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') terminar(); }, { once: true });
