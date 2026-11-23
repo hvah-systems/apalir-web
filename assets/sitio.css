@@ -565,3 +565,37 @@ html.con-intro .intro { display: block; position: fixed; inset: 0; z-index: 1000
   .ticker-pista { animation: none; flex-wrap: wrap; width: auto; }
   .ticker-pista span[aria-hidden] { display: none; }
 }
+
+/* ============ Portada en el teléfono: foto arriba, texto abajo sobre el azul ============ */
+:root, [data-tema="iglesia"] { --hero-fundido: linear-gradient(180deg, rgba(11, 47, 72, .05) 0%, rgba(11, 47, 72, .25) 40%, rgba(11, 47, 72, .88) 76%, #0b2f48 100%); }
+[data-tema="fundacion"] { --hero-fundido: linear-gradient(180deg, rgba(68, 40, 47, .05) 0%, rgba(68, 40, 47, .25) 40%, rgba(68, 40, 47, .9) 76%, #44282f 100%); }
+@media (max-width: 760px) {
+  .hero { min-height: 0; display: block; }
+  .hero::before, .hero::after { bottom: auto; height: 62vh; }
+  .hero::before { opacity: 1; background-position: 50% 22%; }
+  .hero::after { background: var(--hero-fundido); }
+  .hero-viaje::before { inset: -24px -24px auto; height: calc(62vh + 24px); }
+  .hero > .contenedor { padding: 40vh 0 112px; gap: 32px; }
+  .hero h1 { font-size: clamp(2.2rem, 10vw, 2.8rem); text-shadow: 0 2px 18px rgba(0, 0, 0, .35); }
+  .hero .eyebrow { text-shadow: 0 1px 10px rgba(0, 0, 0, .5); }
+  .hero p.lead { font-size: 1.05rem; max-width: none; }
+  .hero .acciones { flex-direction: column; }
+  .hero .acciones .btn { width: 100%; justify-content: center; }
+  .hero figure { justify-self: center; text-align: center; }
+  .hero figure img { width: min(230px, 62vw); margin: 0 auto; animation: none; transform: rotate(-2deg); }
+  [data-tema="fundacion"] .hero figure img { width: min(320px, 86vw); transform: none; }
+  .hero figcaption { margin-top: 12px; font-size: .95rem; }
+  .manos-giro { top: 22vh; }
+  .collage { height: 300px; max-width: 360px; margin: 0 auto; }
+  .franja { margin-top: -56px; }
+  .anuncio { font-size: .82rem; }
+}
+@media (max-width: 760px) {
+  .hero::before { animation: none; }
+  .hero::after { height: calc(62vh + 2px); }
+  .hero > .contenedor { padding-top: 37vh; }
+  .hero figure img { width: min(210px, 56vw); }
+}
+@media (max-width: 760px) {
+  .hero-viaje::before { filter: none; inset: 0 0 auto; height: 62vh; background-position: 50% 30%; }
+}
